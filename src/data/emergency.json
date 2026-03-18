@@ -1,0 +1,26 @@
+[
+    {
+        "id": "emergency",
+        "label": "All emergencies",
+        "number": "112",
+        "type": "emergency"
+    },
+    {
+        "id": "hospital",
+        "label": "Mater Dei Hospital",
+        "number": "2545 0000",
+        "type": "hospital"
+    },
+    {
+        "id": "police",
+        "label": "Police",
+        "number": "2122 4001",
+        "type": "police"
+    },
+    {
+        "id": "ambulance",
+        "label": "Ambulance",
+        "number": "196",
+        "type": "ambulance"
+    }
+]

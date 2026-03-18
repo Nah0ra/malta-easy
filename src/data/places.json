@@ -1,0 +1,56 @@
+[
+    {
+        "id": "valletta",
+        "name": "Valletta",
+        "category": "historic",
+        "description": "Malta's Baroque capital and UNESCO World Heritage city. Explore the Grand Harbour, St John's Co-Cathedral, and the Upper Barrakka Gardens.",
+        "tags": ["Historic", "UNESCO site", "30 min by bus"],
+        "lat": 35.8997,
+        "lng": 14.5147
+    },
+    {
+        "id": "mdina",
+        "name": "Mdina",
+        "category": "historic",
+        "description": "The Silent City — a medieval walled town perched on a hilltop. Best visited early morning before the crowds. Stunning views across the island.",
+        "tags": ["Historic", "Medieval", "Bus 51, 52"],
+        "lat": 35.8878,
+        "lng": 14.4025
+    },
+    {
+        "id": "gozo",
+        "name": "Gozo Island",
+        "category": "nature",
+        "description": "Malta's quieter sister island. Take the 25-minute ferry from Ċirkewwa. Visit the Citadella, Azure Window site, and swim at Ramla Bay.",
+        "tags": ["Nature", "Day trip", "Ferry required"],
+        "lat": 36.0444,
+        "lng": 14.2396
+    },
+    {
+        "id": "marsaxlokk",
+        "name": "Marsaxlokk",
+        "category": "village",
+        "description": "A traditional fishing village famous for its colourful luzzu boats. Sunday market is a highlight — fresh fish, local produce, and crafts.",
+        "tags": ["Village", "Sunday market", "Bus 81, 85"],
+        "lat": 35.8414,
+        "lng": 14.5431
+    },
+    {
+        "id": "blueLagoon",
+        "name": "Blue Lagoon",
+        "category": "beaches",
+        "description": "Malta's most famous swimming spot on Comino island. Crystal-clear turquoise water. Take a ferry from Ċirkewwa or St Paul's Bay.",
+        "tags": ["Beaches", "Comino island", "Boat trip"],
+        "lat": 36.0131,
+        "lng": 14.3364
+    },
+    {
+        "id": "sliema",
+        "name": "Sliema & St Julian's",
+        "category": "village",
+        "description": "Malta's modern seafront strip. Great for restaurants, cafés, and evening walks along the promenade. Vibrant nightlife in Paceville.",
+        "tags": ["Restaurants", "Seafront", "Easy to reach"],
+        "lat": 35.9117,
+        "lng": 14.5022
+    }
+]

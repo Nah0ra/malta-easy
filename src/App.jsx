@@ -9,8 +9,23 @@ import Practical from "./pages/Practical";
 export default function App() {
     return (
         <BrowserRouter>
-            <div className='flex flex-col min-h-screen max-w-lg mx-auto'>
-                <main className='flex-1 overflow-y-auto pb-20'>
+            <div
+                style={{
+                    maxWidth: 480,
+                    margin: "0 auto",
+                    minHeight: "100dvh",
+                    display: "flex",
+                    flexDirection: "column",
+                    background: "var(--cream)",
+                    position: "relative",
+                    overflow: "hidden",
+                }}>
+                <main
+                    style={{
+                        flex: 1,
+                        overflowY: "auto",
+                        paddingBottom: "var(--nav-h)",
+                    }}>
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/places' element={<Places />} />

@@ -1,0 +1,93 @@
+{
+    "buses": [
+        {
+            "number": "X1",
+            "route": "Airport → Valletta",
+            "description": "Via Marsa, direct express route",
+            "price": "€0.75",
+            "frequency": "Every 20 min"
+        },
+        {
+            "number": "X2",
+            "route": "Airport → St Julian's",
+            "description": "Via Sliema, coastal route",
+            "price": "€0.75",
+            "frequency": "Every 30 min"
+        },
+        {
+            "number": "51",
+            "route": "Valletta → Mdina",
+            "description": "Via Hamrun and Qormi",
+            "price": "€0.75",
+            "frequency": "Every 15 min"
+        },
+        {
+            "number": "81",
+            "route": "Valletta → Marsaxlokk",
+            "description": "Scenic south coast route",
+            "price": "€0.75",
+            "frequency": "Every 60 min"
+        },
+        {
+            "number": "41",
+            "route": "Valletta → Ċirkewwa",
+            "description": "For Gozo ferry terminal",
+            "price": "€0.75",
+            "frequency": "Every 30 min"
+        }
+    ],
+    "taxis": [
+        {
+            "id": "bolt",
+            "name": "Bolt",
+            "description": "Most popular · €6–15 across Malta",
+            "color": "#34D058",
+            "textColor": "#002A00",
+            "appUrl": "https://bolt.eu"
+        },
+        {
+            "id": "ecabs",
+            "name": "eCabs Malta",
+            "description": "Official taxi app · Fixed fares",
+            "color": "#1A3A8B",
+            "textColor": "#FFFFFF",
+            "appUrl": "https://ecabs.com.mt"
+        },
+        {
+            "id": "kaptain",
+            "name": "Kaptain",
+            "description": "Local option · Good for airport",
+            "color": "#FF6B2B",
+            "textColor": "#FFFFFF",
+            "appUrl": "https://kaptain.app"
+        }
+    ],
+    "ferries": [
+        {
+            "name": "Malta → Gozo",
+            "route": "Ċirkewwa → Mġarr · 25 minutes",
+            "price": "€4.65",
+            "frequency": "Every 45 min",
+            "note": "Runs 6:00 – 23:00. Take bus 41 from Valletta to Ċirkewwa terminal (1h 10min, €0.75).",
+            "color": "#1A6494"
+        },
+        {
+            "name": "Valletta ↔ Sliema",
+            "route": "Valletta Waterfront · 7 minutes",
+            "price": "€1.50",
+            "frequency": "Every 30 min",
+            "note": "Pleasant way to cross between Valletta and Sliema. Great views of the Grand Harbour fortifications.",
+            "color": "#1A6494"
+        }
+    ],
+    "walking": {
+        "intro": "Valletta is very walkable — the entire old city is about 1km × 600m. You can walk end to end in 20 minutes.",
+        "routes": [
+            {
+                "name": "Valletta Heritage Walk",
+                "description": "City Gate → Republic Street → St John's Co-Cathedral → Upper Barrakka Gardens → Grand Harbour viewpoint. ~45 minutes, mostly flat."
+            }
+        ],
+        "warning": "Malta is very hot June–September. Carry water, wear a hat, and avoid walking midday (12–3pm). Most churches and museums are air-conditioned."
+    }
+}
