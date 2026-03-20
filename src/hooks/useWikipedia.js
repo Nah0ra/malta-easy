@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const memCache = {};
 
 function cacheKey(title) {
-    return `malta-wiki-${title}`;
+    return `malta-wiki-v2-${title}`;
 }
 
 function loadFromStorage(title) {
@@ -22,17 +22,11 @@ function saveToStorage(title, data) {
 }
 
 /**
- * Wikipedia thumbnail URLs follow this pattern:
- *   https://upload.wikimedia.org/wikipedia/.../NNNpx-Filename.ext
- * We swap the NNN for 1200 to get a high-resolution version.
- * If the URL doesn't match (rare), we fall back to the original.
+ * Two-step fetch:
+ *  1. REST summary endpoint  → extract text + mobile Wikipedia link
+ *  2. Action API pageimages  → server-rendered 1200px thumbnail
+ *     (guaranteed to exist, unlike URL-pattern substitution)
  */
-function upscaleWikipediaImage(url) {
-    if (!url) return null;
-    // Match the pixel-width segment e.g. /320px- or /640px-
-    return url.replace(/\/\d+px-/, "/1200px-");
-}
-
 export function useWikipedia(title) {
     const [data, setData] = useState(
         () => memCache[title] || loadFromStorage(title),
@@ -53,18 +47,31 @@ export function useWikipedia(title) {
         }
 
         setLoading(true);
-        fetch(
-            `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
-        )
-            .then((r) => r.json())
-            .then((json) => {
+
+        const summaryUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+
+        const imageUrl =
+            "https://en.wikipedia.org/w/api.php" +
+            `?action=query&titles=${encodeURIComponent(title)}` +
+            "&prop=pageimages&piprop=thumbnail&pithumbsize=1200" +
+            "&format=json&origin=*";
+
+        Promise.all([
+            fetch(summaryUrl).then((r) => r.json()),
+            fetch(imageUrl).then((r) => r.json()),
+        ])
+            .then(([summary, imageData]) => {
+                // Extract the thumbnail from the Action API response
+                const pages = imageData?.query?.pages || {};
+                const page = Object.values(pages)[0] || {};
+                const imgSrc = page?.thumbnail?.source || null;
+
                 const result = {
-                    extract: json.extract || "",
-                    imageUrl: upscaleWikipediaImage(
-                        json.thumbnail?.source || null,
-                    ),
-                    pageUrl: json.content_urls?.mobile?.page || null,
+                    extract: summary.extract || "",
+                    imageUrl: imgSrc,
+                    pageUrl: summary.content_urls?.mobile?.page || null,
                 };
+
                 memCache[title] = result;
                 saveToStorage(title, result);
                 setData(result);
