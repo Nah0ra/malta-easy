@@ -1,15 +1,16 @@
+import { useState, useEffect } from "react";
 import ScreenHeader from "../components/ScreenHeader";
-import WeatherCard from "../components/WeatherCard";
-import CurrencyConverter from "../components/CurrencyConverter";
 import emergency from "../data/emergency.json";
 
+const FONT_KEY = "malta_app_fontsize";
+
 const phrases = [
-    { en: "Hello", mt: "Bonġu" },
+    { en: "Hello", mt: "Bong\u0121u" },
     { en: "Thank you", mt: "Grazzi" },
-    { en: "Please", mt: "Jekk jogħġbok" },
+    { en: "Please", mt: "Jekk jo\u0121\u0121bok" },
     { en: "Where is...?", mt: "Fejn hu...?" },
     { en: "How much?", mt: "Kemm jiswu?" },
-    { en: "Excuse me", mt: "Skużani" },
+    { en: "Excuse me", mt: "Sku\u017cani" },
     { en: "Yes / No", mt: "Iva / Le" },
 ];
 
@@ -119,16 +120,193 @@ function InfoCard({ title, children }) {
 }
 
 export default function Practical() {
+    const [largText, setLargeText] = useState(() => {
+        return localStorage.getItem(FONT_KEY) === "large";
+    });
+
+    useEffect(() => {
+        applyFontSize(largText);
+    }, [largText]);
+
+    function applyFontSize(large) {
+        document.documentElement.style.fontSize = large ? "20px" : "16px";
+        localStorage.setItem(FONT_KEY, large ? "large" : "normal");
+    }
+
+    function toggleFontSize() {
+        setLargeText((prev) => {
+            const next = !prev;
+            applyFontSize(next);
+            return next;
+        });
+    }
+
     return (
         <div>
             <ScreenHeader
                 title='Practical info'
                 subtitle='Everything you need to know'
             />
-            <div style={{ padding: "20px 20px 0" }}>
-                <SectionTitle>Weather</SectionTitle>
-                <WeatherCard />
 
+            <div style={{ padding: "20px 20px 0" }}>
+                {/* Weather card */}
+                <div
+                    style={{
+                        background:
+                            "linear-gradient(135deg, var(--red), #A0102A)",
+                        borderRadius: "var(--r-md)",
+                        padding: 18,
+                        marginBottom: 20,
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                    }}>
+                    <div>
+                        <p
+                            style={{
+                                fontSize: 13,
+                                color: "rgba(255,255,255,0.7)",
+                                fontWeight: 400,
+                                marginBottom: 2,
+                            }}>
+                            Valletta, Malta
+                        </p>
+                        <p
+                            style={{
+                                fontFamily: "var(--font-display)",
+                                fontSize: 52,
+                                fontWeight: 400,
+                                color: "white",
+                                lineHeight: 1,
+                            }}>
+                            28°
+                        </p>
+                        <p
+                            style={{
+                                fontSize: 13,
+                                color: "rgba(255,255,255,0.8)",
+                                fontWeight: 300,
+                                marginTop: 4,
+                            }}>
+                            Sunny · Light breeze
+                        </p>
+                    </div>
+                    <svg
+                        width='52'
+                        height='52'
+                        viewBox='0 0 48 48'
+                        fill='none'
+                        stroke='rgba(255,255,255,0.65)'
+                        strokeWidth='1.5'
+                        strokeLinecap='round'>
+                        <circle cx='24' cy='24' r='10' />
+                        <line x1='24' y1='4' x2='24' y2='10' />
+                        <line x1='24' y1='38' x2='24' y2='44' />
+                        <line x1='4' y1='24' x2='10' y2='24' />
+                        <line x1='38' y1='24' x2='44' y2='24' />
+                        <line x1='8.7' y1='8.7' x2='13' y2='13' />
+                        <line x1='35' y1='35' x2='39.3' y2='39.3' />
+                        <line x1='39.3' y1='8.7' x2='35' y2='13' />
+                        <line x1='13' y1='35' x2='8.7' y2='39.3' />
+                    </svg>
+                </div>
+
+                {/* ── Text size toggle ── */}
+                <SectionTitle>Display</SectionTitle>
+                <div
+                    style={{
+                        background: "var(--white)",
+                        borderRadius: "var(--r-md)",
+                        padding: "14px 16px",
+                        border: "1px solid var(--border)",
+                        marginBottom: 20,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 14,
+                    }}>
+                    <div style={{ flex: 1 }}>
+                        <p
+                            style={{
+                                fontSize: 14,
+                                fontWeight: 500,
+                                color: "var(--ink)",
+                                marginBottom: 3,
+                            }}>
+                            Text size
+                        </p>
+                        <p
+                            style={{
+                                fontSize: 12,
+                                color: "var(--ink-3)",
+                                fontWeight: 300,
+                                lineHeight: 1.5,
+                            }}>
+                            {largText
+                                ? "Large text is on — easier to read"
+                                : "Switch to larger text if needed"}
+                        </p>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 0,
+                            border: "1px solid var(--border)",
+                            borderRadius: "var(--r-sm)",
+                            overflow: "hidden",
+                            flexShrink: 0,
+                        }}>
+                        <button
+                            onClick={() => {
+                                if (largText) toggleFontSize();
+                            }}
+                            style={{
+                                padding: "9px 16px",
+                                fontSize: 15,
+                                fontWeight: 500,
+                                fontFamily: "var(--font-body)",
+                                background: !largText
+                                    ? "var(--red)"
+                                    : "transparent",
+                                color: !largText ? "white" : "var(--ink-3)",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 0.18s",
+                                lineHeight: 1,
+                            }}>
+                            A
+                        </button>
+                        <div
+                            style={{
+                                width: 1,
+                                alignSelf: "stretch",
+                                background: "var(--border)",
+                            }}
+                        />
+                        <button
+                            onClick={() => {
+                                if (!largText) toggleFontSize();
+                            }}
+                            style={{
+                                padding: "9px 16px",
+                                fontSize: 20,
+                                fontWeight: 500,
+                                fontFamily: "var(--font-body)",
+                                background: largText
+                                    ? "var(--red)"
+                                    : "transparent",
+                                color: largText ? "white" : "var(--ink-3)",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 0.18s",
+                                lineHeight: 1,
+                            }}>
+                            A
+                        </button>
+                    </div>
+                </div>
+
+                {/* Emergency numbers */}
                 <SectionTitle>Emergency numbers</SectionTitle>
                 {emergency.map((item) => (
                     <div
@@ -196,11 +374,9 @@ export default function Practical() {
                     </div>
                 ))}
 
-                <SectionTitle>Currency converter</SectionTitle>
-                <CurrencyConverter />
-
-                <SectionTitle>Money & ATMs</SectionTitle>
-                <InfoCard title='Currency: Euro (€)'>
+                {/* Money */}
+                <SectionTitle>Money &amp; currency</SectionTitle>
+                <InfoCard title='Currency: Euro (\u20ac)'>
                     <p
                         style={{
                             fontSize: 13,
@@ -208,14 +384,15 @@ export default function Practical() {
                             lineHeight: 1.6,
                             fontWeight: 300,
                         }}>
-                        ATMs are widely available in Valletta, Sliema and St
-                        Julian's. Most restaurants and shops accept
-                        Visa/Mastercard. Tip 10% in restaurants if not already
-                        included.
+                        Malta uses the Euro. ATMs are widely available in
+                        Valletta, Sliema and St Julian&apos;s. Most restaurants
+                        and shops accept Visa/Mastercard. Tip 10% in restaurants
+                        if not included.
                     </p>
                 </InfoCard>
 
-                <SectionTitle>SIM & internet</SectionTitle>
+                {/* SIM */}
+                <SectionTitle>SIM &amp; internet</SectionTitle>
                 <InfoCard title='Stay connected'>
                     <p
                         style={{
@@ -231,6 +408,7 @@ export default function Practical() {
                     </p>
                 </InfoCard>
 
+                {/* Phrases */}
                 <SectionTitle>Useful Maltese phrases</SectionTitle>
                 <InfoCard>
                     <table
@@ -270,12 +448,6 @@ export default function Practical() {
                         </tbody>
                     </table>
                 </InfoCard>
-                <div style={{ color: "gray", fontSize: "14px" }}>
-                    <p>
-                        Designed and Developed by Andrii Kushch and Natália
-                        Pakesová
-                    </p>
-                </div>
 
                 <div style={{ height: 16 }} />
             </div>

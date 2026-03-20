@@ -82,3 +82,8 @@ body {
     color: var(--ink) !important;
     border-color: var(--border) !important;
 }
+
+/* Font size transition — makes the text size toggle animate smoothly */
+html {
+    transition: font-size 0.25s ease;
+}

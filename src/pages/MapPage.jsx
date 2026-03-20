@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import places from "../data/places.json";
 
 const MALTA_CENTER = [35.9375, 14.3754];
 const MALTA_ZOOM = 11;
+
+const VENUE = {
+    lat: 35.8988,
+    lng: 14.5128,
+    name: "Course Venue",
+    address: "142 St. Christopher\u2019s Street, Valletta",
+};
 
 const pinColors = {
     historic: "#CF142B",
@@ -17,26 +24,26 @@ const pinColors = {
 function createColorPin(color) {
     return L.divIcon({
         className: "",
-        html: `
-      <div style="
-        width:28px; height:28px; border-radius:50% 50% 50% 0;
-        transform:rotate(-45deg);
-        background:${color};
-        border:2.5px solid white;
-        box-shadow:0 2px 8px rgba(0,0,0,0.25);
-      "></div>
-    `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
+        html: `<div style="width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:${color};border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.22);"></div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 26],
         popupAnchor: [0, -30],
     });
 }
+
+const venuePin = L.divIcon({
+    className: "",
+    html: `<div style="width:36px;height:36px;border-radius:50%;background:#1C1917;border:3px solid #FAC775;box-shadow:0 3px 12px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>`,
+    iconSize: [36, 36],
+    iconAnchor: [18, 36],
+    popupAnchor: [0, -38],
+});
 
 const filters = ["All", "Historic", "Nature", "Beaches", "Villages"];
 
 export default function MapPage() {
     const [activeFilter, setActiveFilter] = useState("All");
-    const [selected, setSelected] = useState(places[0]);
+    const [selected, setSelected] = useState(null);
 
     const filtered =
         activeFilter === "All"
@@ -54,7 +61,6 @@ export default function MapPage() {
                 flexDirection: "column",
                 height: "calc(100dvh - var(--nav-h))",
             }}>
-            {/* Search bar */}
             <div
                 style={{
                     padding: "12px 20px",
@@ -92,7 +98,6 @@ export default function MapPage() {
                 </div>
             </div>
 
-            {/* Filter chips */}
             <div
                 className='hide-scrollbar'
                 style={{
@@ -134,18 +139,95 @@ export default function MapPage() {
                 ))}
             </div>
 
-            {/* Map */}
+            <div
+                style={{
+                    padding: "8px 16px",
+                    background: "var(--white)",
+                    borderBottom: "1px solid var(--border)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    flexShrink: 0,
+                }}>
+                <div
+                    style={{
+                        width: 20,
+                        height: 20,
+                        borderRadius: "50%",
+                        background: "#1C1917",
+                        border: "2px solid #FAC775",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                    }}>
+                    <svg
+                        width='9'
+                        height='9'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='#FAC775'
+                        strokeWidth='2.5'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'>
+                        <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
+                    </svg>
+                </div>
+                <span
+                    style={{
+                        fontSize: 12,
+                        color: "var(--ink-2)",
+                        fontWeight: 400,
+                    }}>
+                    Your course venue — 142 St. Christopher&apos;s St, Valletta
+                </span>
+            </div>
+
             <div style={{ flex: 1, position: "relative" }}>
                 <MapContainer
                     center={MALTA_CENTER}
                     zoom={MALTA_ZOOM}
                     style={{ width: "100%", height: "100%" }}
-                    zoomControl={true}
+                    zoomControl
                     scrollWheelZoom={false}>
                     <TileLayer
                         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                         attribution=''
                     />
+
+                    <Marker
+                        position={[VENUE.lat, VENUE.lng]}
+                        icon={venuePin}
+                        zIndexOffset={1000}
+                        eventHandlers={{
+                            click: () =>
+                                setSelected({
+                                    id: "venue",
+                                    name: VENUE.name,
+                                    tags: [VENUE.address],
+                                    category: "venue",
+                                }),
+                        }}>
+                        <Popup>
+                            <strong
+                                style={{
+                                    fontFamily: "var(--font-body)",
+                                    fontSize: 13,
+                                }}>
+                                {VENUE.name}
+                            </strong>
+                            <br />
+                            <span
+                                style={{
+                                    fontFamily: "var(--font-body)",
+                                    fontSize: 11,
+                                    color: "#78716C",
+                                }}>
+                                {VENUE.address}
+                            </span>
+                        </Popup>
+                    </Marker>
+
                     {filtered.map((place) => (
                         <Marker
                             key={place.id}
@@ -167,7 +249,6 @@ export default function MapPage() {
                     ))}
                 </MapContainer>
 
-                {/* Selected place card */}
                 {selected && (
                     <div
                         style={{
@@ -191,24 +272,41 @@ export default function MapPage() {
                                 height: 40,
                                 borderRadius: "var(--r-sm)",
                                 background:
-                                    pinColors[selected.category] ||
-                                    pinColors.default,
+                                    selected.category === "venue"
+                                        ? "#1C1917"
+                                        : pinColors[selected.category] ||
+                                          pinColors.default,
                                 flexShrink: 0,
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
                             }}>
-                            <svg
-                                width='18'
-                                height='18'
-                                viewBox='0 0 24 24'
-                                fill='none'
-                                stroke='white'
-                                strokeWidth='2'
-                                strokeLinecap='round'>
-                                <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' />
-                                <circle cx='12' cy='10' r='3' />
-                            </svg>
+                            {selected.category === "venue" ? (
+                                <svg
+                                    width='18'
+                                    height='18'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    stroke='#FAC775'
+                                    strokeWidth='2'
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'>
+                                    <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
+                                    <polyline points='9 22 9 12 15 12 15 22' />
+                                </svg>
+                            ) : (
+                                <svg
+                                    width='18'
+                                    height='18'
+                                    viewBox='0 0 24 24'
+                                    fill='none'
+                                    stroke='white'
+                                    strokeWidth='2'
+                                    strokeLinecap='round'>
+                                    <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' />
+                                    <circle cx='12' cy='10' r='3' />
+                                </svg>
+                            )}
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                             <p
