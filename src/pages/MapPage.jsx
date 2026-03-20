@@ -3,10 +3,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import places from "../data/places.json";
 
-const MALTA_CENTER = [35.9, 14.45];
-const MALTA_ZOOM = 11;
+const MALTA_CENTER = [35.92, 14.42];
+const MALTA_ZOOM = 10;
 
-// Course venue — 142 St Christopher's Street, Valletta VLT 1465
 const VENUE = {
     lat: 35.8993,
     lng: 14.513,
@@ -14,7 +13,7 @@ const VENUE = {
     address: "142 St Christopher's Street, Valletta",
 };
 
-const pinColors = {
+const catColors = {
     historic: "#CF142B",
     nature: "#2D7A60",
     beaches: "#2466A8",
@@ -22,13 +21,12 @@ const pinColors = {
     default: "#CF142B",
 };
 
-function createPlacePin(color) {
+function placePin(color) {
     return L.divIcon({
         className: "",
         html: `<div style="
       width:26px;height:26px;border-radius:50% 50% 50% 0;
-      transform:rotate(-45deg);
-      background:${color};
+      transform:rotate(-45deg);background:${color};
       border:2.5px solid white;
       box-shadow:0 2px 8px rgba(0,0,0,0.22);
     "></div>`,
@@ -38,39 +36,25 @@ function createPlacePin(color) {
     });
 }
 
-function createVenuePin() {
+function venuePin() {
     return L.divIcon({
         className: "",
         html: `
-      <div style="
-        display:flex;flex-direction:column;align-items:center;
-      ">
+      <div style="display:flex;flex-direction:column;align-items:center;">
         <div style="
           background:#1C1917;color:white;
-          font-family:'DM Sans',sans-serif;
-          font-size:11px;font-weight:500;
+          font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
           padding:5px 10px;border-radius:8px;
           border:2px solid white;
           box-shadow:0 3px 12px rgba(0,0,0,0.3);
-          white-space:nowrap;letter-spacing:0.01em;
-        ">
-          <span style="margin-right:5px">★</span>Course venue
-        </div>
-        <div style="
-          width:2px;height:8px;
-          background:#1C1917;
-          margin-top:-1px;
-        "></div>
-        <div style="
-          width:8px;height:8px;border-radius:50%;
-          background:#1C1917;
-          margin-top:-1px;
-        "></div>
-      </div>
-    `,
-        iconSize: [130, 44],
-        iconAnchor: [65, 44],
-        popupAnchor: [0, -46],
+          white-space:nowrap;
+        ">&#9733; Course venue</div>
+        <div style="width:2px;height:8px;background:#1C1917;margin-top:-1px;"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#1C1917;margin-top:-1px;"></div>
+      </div>`,
+        iconSize: [130, 48],
+        iconAnchor: [65, 48],
+        popupAnchor: [0, -50],
     });
 }
 
@@ -96,7 +80,7 @@ export default function MapPage() {
                 flexDirection: "column",
                 height: "calc(100dvh - var(--nav-h))",
             }}>
-            {/* Search bar */}
+            {/* Search */}
             <div
                 style={{
                     padding: "12px 20px",
@@ -176,30 +160,25 @@ export default function MapPage() {
                 ))}
             </div>
 
-            {/* Map area */}
+            {/* Map */}
             <div style={{ flex: 1, position: "relative" }}>
                 <MapContainer
                     center={MALTA_CENTER}
                     zoom={MALTA_ZOOM}
                     style={{ width: "100%", height: "100%" }}
-                    zoomControl={true}
                     scrollWheelZoom={false}>
                     <TileLayer
                         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                         attribution=''
                     />
 
-                    {/* Course venue — always visible regardless of filter */}
+                    {/* Course venue — always visible */}
                     <Marker
                         position={[VENUE.lat, VENUE.lng]}
-                        icon={createVenuePin()}
+                        icon={venuePin()}
                         zIndexOffset={1000}>
                         <Popup>
-                            <div
-                                style={{
-                                    fontFamily: "var(--font-body)",
-                                    padding: "2px 0",
-                                }}>
+                            <div style={{ fontFamily: "var(--font-body)" }}>
                                 <p
                                     style={{
                                         fontSize: 13,
@@ -220,8 +199,8 @@ export default function MapPage() {
                         <Marker
                             key={place.id}
                             position={[place.lat, place.lng]}
-                            icon={createPlacePin(
-                                pinColors[place.category] || pinColors.default,
+                            icon={placePin(
+                                catColors[place.category] || catColors.default,
                             )}
                             eventHandlers={{ click: () => setSelected(place) }}>
                             <Popup>
@@ -238,7 +217,7 @@ export default function MapPage() {
                     ))}
                 </MapContainer>
 
-                {/* Venue legend pill */}
+                {/* Legend */}
                 <div
                     style={{
                         position: "absolute",
@@ -246,32 +225,48 @@ export default function MapPage() {
                         right: 12,
                         background: "white",
                         borderRadius: 10,
-                        padding: "7px 12px",
+                        zIndex: 500,
+                        padding: "8px 12px",
                         boxShadow: "0 2px 12px rgba(0,0,0,0.12)",
                         border: "1px solid var(--border)",
                         display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        zIndex: 500,
+                        flexDirection: "column",
+                        gap: 5,
                     }}>
-                    <div
-                        style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 2,
-                            background: "#1C1917",
-                            flexShrink: 0,
-                        }}
-                    />
-                    <span
-                        style={{
-                            fontSize: 11,
-                            fontWeight: 500,
-                            color: "var(--ink-2)",
-                            fontFamily: "var(--font-body)",
-                        }}>
-                        Your venue
-                    </span>
+                    {[
+                        { color: "#CF142B", label: "Historic" },
+                        { color: "#2D7A60", label: "Nature" },
+                        { color: "#2466A8", label: "Beaches" },
+                        { color: "#8B6A52", label: "Villages" },
+                        { color: "#1C1917", label: "Venue", square: true },
+                    ].map((item) => (
+                        <div
+                            key={item.label}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 6,
+                            }}>
+                            <div
+                                style={{
+                                    width: 10,
+                                    height: 10,
+                                    flexShrink: 0,
+                                    borderRadius: item.square ? 2 : "50%",
+                                    background: item.color,
+                                }}
+                            />
+                            <span
+                                style={{
+                                    fontSize: 11,
+                                    fontWeight: 500,
+                                    color: "var(--ink-2)",
+                                    fontFamily: "var(--font-body)",
+                                }}>
+                                {item.label}
+                            </span>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Selected place card */}
@@ -298,8 +293,8 @@ export default function MapPage() {
                                 height: 42,
                                 borderRadius: "var(--r-sm)",
                                 background:
-                                    pinColors[selected.category] ||
-                                    pinColors.default,
+                                    catColors[selected.category] ||
+                                    catColors.default,
                                 flexShrink: 0,
                                 display: "flex",
                                 alignItems: "center",
@@ -317,7 +312,6 @@ export default function MapPage() {
                                 <circle cx='12' cy='10' r='3' />
                             </svg>
                         </div>
-
                         <div style={{ flex: 1, minWidth: 0 }}>
                             <p
                                 style={{
@@ -340,7 +334,6 @@ export default function MapPage() {
                                 {selected.tags.join(" · ")}
                             </p>
                         </div>
-
                         <button
                             onClick={() => setSelected(null)}
                             aria-label='Close'

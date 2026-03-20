@@ -4,13 +4,14 @@ const tabs = [
     {
         path: "/",
         label: "Home",
-        icon: (
+        icon: (active) => (
             <svg
                 viewBox='0 0 24 24'
                 fill='none'
                 strokeWidth='2'
                 strokeLinecap='round'
-                strokeLinejoin='round'>
+                strokeLinejoin='round'
+                stroke={active ? "var(--red)" : "var(--ink-3)"}>
                 <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
                 <polyline points='9 22 9 12 15 12 15 22' />
             </svg>
@@ -19,13 +20,14 @@ const tabs = [
     {
         path: "/places",
         label: "Places",
-        icon: (
+        icon: (active) => (
             <svg
                 viewBox='0 0 24 24'
                 fill='none'
                 strokeWidth='2'
                 strokeLinecap='round'
-                strokeLinejoin='round'>
+                strokeLinejoin='round'
+                stroke={active ? "var(--red)" : "var(--ink-3)"}>
                 <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' />
                 <circle cx='12' cy='10' r='3' />
             </svg>
@@ -34,13 +36,14 @@ const tabs = [
     {
         path: "/transport",
         label: "Transport",
-        icon: (
+        icon: (active) => (
             <svg
                 viewBox='0 0 24 24'
                 fill='none'
                 strokeWidth='2'
                 strokeLinecap='round'
-                strokeLinejoin='round'>
+                strokeLinejoin='round'
+                stroke={active ? "var(--red)" : "var(--ink-3)"}>
                 <rect x='1' y='3' width='15' height='13' rx='2' />
                 <polygon points='16 8 20 8 23 11 23 16 16 16 16 8' />
                 <circle cx='5.5' cy='18.5' r='2.5' />
@@ -51,13 +54,14 @@ const tabs = [
     {
         path: "/map",
         label: "Map",
-        icon: (
+        icon: (active) => (
             <svg
                 viewBox='0 0 24 24'
                 fill='none'
                 strokeWidth='2'
                 strokeLinecap='round'
-                strokeLinejoin='round'>
+                strokeLinejoin='round'
+                stroke={active ? "var(--red)" : "var(--ink-3)"}>
                 <polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6' />
                 <line x1='8' y1='2' x2='8' y2='18' />
                 <line x1='16' y1='6' x2='16' y2='22' />
@@ -67,13 +71,14 @@ const tabs = [
     {
         path: "/practical",
         label: "Info",
-        icon: (
+        icon: (active) => (
             <svg
                 viewBox='0 0 24 24'
                 fill='none'
                 strokeWidth='2'
                 strokeLinecap='round'
-                strokeLinejoin='round'>
+                strokeLinejoin='round'
+                stroke={active ? "var(--red)" : "var(--ink-3)"}>
                 <circle cx='12' cy='12' r='10' />
                 <line x1='12' y1='8' x2='12' y2='12' />
                 <line x1='12' y1='16' x2='12.01' y2='16' />
@@ -87,19 +92,16 @@ export default function BottomNav() {
     const { pathname } = useLocation();
 
     return (
+        /* NOTE: not position:fixed — sits in flex column so it scales
+       correctly with the parent scale3d transform on iOS */
         <nav
             style={{
-                position: "fixed",
-                bottom: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "100%",
-                maxWidth: 480,
                 height: "var(--nav-h)",
                 background: "var(--white)",
                 borderTop: "1px solid var(--border)",
                 display: "flex",
-                zIndex: 100,
+                paddingBottom: 8,
+                flexShrink: 0,
             }}>
             {tabs.map((tab) => {
                 const active = pathname === tab.path;
@@ -107,6 +109,8 @@ export default function BottomNav() {
                     <button
                         key={tab.path}
                         onClick={() => navigate(tab.path)}
+                        aria-label={tab.label}
+                        aria-current={active ? "page" : undefined}
                         style={{
                             flex: 1,
                             display: "flex",
@@ -119,6 +123,7 @@ export default function BottomNav() {
                             border: "none",
                             cursor: "pointer",
                             WebkitTapHighlightColor: "transparent",
+                            minHeight: 48,
                         }}>
                         <span
                             style={{
@@ -131,18 +136,15 @@ export default function BottomNav() {
                                 background: active
                                     ? "var(--red-light)"
                                     : "transparent",
-                                transition: "background 0.2s",
+                                transition: "background 0.18s",
                             }}>
                             <span
                                 style={{
                                     width: 18,
                                     height: 18,
                                     display: "block",
-                                    stroke: active
-                                        ? "var(--red)"
-                                        : "var(--ink-3)",
                                 }}>
-                                {tab.icon}
+                                {tab.icon(active)}
                             </span>
                         </span>
                         <span

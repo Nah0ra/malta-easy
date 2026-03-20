@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-const STORAGE_KEY = "malta-app-large-text";
+const STORAGE_KEY = "malta-large-text";
 
 export const FontSizeContext = createContext({
     largeText: false,
@@ -22,7 +22,7 @@ export function FontSizeProvider({ children }) {
         } catch {}
     }, [largeText]);
 
-    const toggle = () => setLargeText((prev) => !prev);
+    const toggle = () => setLargeText((p) => !p);
 
     return (
         <FontSizeContext.Provider value={{ largeText, toggle }}>

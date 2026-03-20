@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import PlaceCard from "../components/PlaceCard";
+import PlaceDetailModal from "../components/PlaceDetailModal";
 import places from "../data/places.json";
 
 const filters = [
@@ -13,6 +14,7 @@ const filters = [
 
 export default function Places() {
     const [active, setActive] = useState("all");
+    const [selected, setSelected] = useState(null);
 
     const filtered =
         active === "all" ? places : places.filter((p) => p.category === active);
@@ -57,13 +59,14 @@ export default function Places() {
                             cursor: "pointer",
                             transition: "all 0.15s",
                             whiteSpace: "nowrap",
+                            minHeight: 40,
                         }}>
                         {f.label}
                     </button>
                 ))}
             </div>
 
-            {/* Cards */}
+            {/* Card list */}
             <div
                 style={{
                     padding: "16px 20px",
@@ -73,7 +76,11 @@ export default function Places() {
                 }}>
                 {filtered.length > 0 ? (
                     filtered.map((place) => (
-                        <PlaceCard key={place.id} place={place} />
+                        <PlaceCard
+                            key={place.id}
+                            place={place}
+                            onClick={setSelected}
+                        />
                     ))
                 ) : (
                     <p
@@ -87,6 +94,12 @@ export default function Places() {
                     </p>
                 )}
             </div>
+
+            {/* Detail modal — rendered at the bottom so it overlays everything */}
+            <PlaceDetailModal
+                place={selected}
+                onClose={() => setSelected(null)}
+            />
         </div>
     );
 }

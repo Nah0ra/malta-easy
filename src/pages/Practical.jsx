@@ -1,5 +1,8 @@
+import { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import { useFontSizeContext } from "../context/FontSizeContext";
+import { useWeather } from "../hooks/useWeather";
+import { useCurrency, CURRENCIES } from "../hooks/useCurrency";
 import emergency from "../data/emergency.json";
 
 const phrases = [
@@ -117,8 +120,376 @@ function InfoCard({ title, children }) {
     );
 }
 
+function WeatherCard({ weather, isStale }) {
+    const icons = {
+        sun: (
+            <svg
+                width='48'
+                height='48'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.65)'
+                strokeWidth='1.5'
+                strokeLinecap='round'>
+                <circle cx='12' cy='12' r='5' />
+                <line x1='12' y1='1' x2='12' y2='3' />
+                <line x1='12' y1='21' x2='12' y2='23' />
+                <line x1='4.22' y1='4.22' x2='5.64' y2='5.64' />
+                <line x1='18.36' y1='18.36' x2='19.78' y2='19.78' />
+                <line x1='1' y1='12' x2='3' y2='12' />
+                <line x1='21' y1='12' x2='23' y2='12' />
+                <line x1='4.22' y1='19.78' x2='5.64' y2='18.36' />
+                <line x1='18.36' y1='5.64' x2='19.78' y2='4.22' />
+            </svg>
+        ),
+        cloud: (
+            <svg
+                width='48'
+                height='48'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.65)'
+                strokeWidth='1.5'
+                strokeLinecap='round'>
+                <path d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z' />
+            </svg>
+        ),
+        rain: (
+            <svg
+                width='48'
+                height='48'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.65)'
+                strokeWidth='1.5'
+                strokeLinecap='round'>
+                <line x1='16' y1='13' x2='16' y2='21' />
+                <line x1='8' y1='13' x2='8' y2='21' />
+                <line x1='12' y1='15' x2='12' y2='23' />
+                <path d='M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25' />
+            </svg>
+        ),
+        storm: (
+            <svg
+                width='48'
+                height='48'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.65)'
+                strokeWidth='1.5'
+                strokeLinecap='round'>
+                <path d='M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9' />
+                <polyline points='13 11 9 17 15 17 11 23' />
+            </svg>
+        ),
+    };
+
+    if (!weather) {
+        return (
+            <div
+                style={{
+                    background: "linear-gradient(135deg, var(--red), #A0102A)",
+                    borderRadius: "var(--r-md)",
+                    padding: 18,
+                    marginBottom: 20,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                }}>
+                <div
+                    style={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: "50%",
+                        border: "2px solid rgba(255,255,255,0.4)",
+                        borderTopColor: "white",
+                        animation: "spin 0.8s linear infinite",
+                    }}
+                />
+                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+                <p
+                    style={{
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: 14,
+                        fontWeight: 300,
+                    }}>
+                    Loading weather...
+                </p>
+            </div>
+        );
+    }
+
+    const updatedStr = weather.fetchedAt
+        ? new Date(weather.fetchedAt).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+          })
+        : null;
+
+    return (
+        <div
+            style={{
+                background: "linear-gradient(135deg, var(--red), #A0102A)",
+                borderRadius: "var(--r-md)",
+                padding: 18,
+                marginBottom: 20,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+            }}>
+            <div>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
+                        marginBottom: 2,
+                    }}>
+                    <p
+                        style={{
+                            fontSize: 13,
+                            color: "rgba(255,255,255,0.7)",
+                            fontWeight: 400,
+                        }}>
+                        Valletta, Malta
+                    </p>
+                    {isStale && (
+                        <span
+                            style={{
+                                fontSize: 10,
+                                padding: "1px 7px",
+                                borderRadius: 100,
+                                background: "rgba(255,255,255,0.18)",
+                                color: "rgba(255,255,255,0.7)",
+                            }}>
+                            offline
+                        </span>
+                    )}
+                </div>
+                <p
+                    style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 52,
+                        fontWeight: 400,
+                        color: "white",
+                        lineHeight: 1,
+                    }}>
+                    {weather.temp}°
+                </p>
+                <p
+                    style={{
+                        fontSize: 13,
+                        color: "rgba(255,255,255,0.8)",
+                        fontWeight: 300,
+                        marginTop: 4,
+                    }}>
+                    {weather.desc} · {weather.wind} km/h
+                </p>
+                {updatedStr && (
+                    <p
+                        style={{
+                            fontSize: 11,
+                            color: "rgba(255,255,255,0.45)",
+                            marginTop: 4,
+                        }}>
+                        Updated {updatedStr}
+                    </p>
+                )}
+            </div>
+            {icons[weather.icon] || icons.cloud}
+        </div>
+    );
+}
+
+function CurrencyConverter({ rates, updatedAt, isStale }) {
+    const [amount, setAmount] = useState("1");
+    const parsed = parseFloat(amount) || 0;
+
+    const formatted = (val) => {
+        if (val >= 1000)
+            return val.toLocaleString("en", { maximumFractionDigits: 0 });
+        if (val < 1) return val.toFixed(3);
+        return val.toFixed(2);
+    };
+
+    const dateStr = updatedAt
+        ? new Date(updatedAt).toLocaleDateString("en", {
+              day: "numeric",
+              month: "short",
+          })
+        : null;
+
+    return (
+        <InfoCard>
+            {/* Header */}
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: 14,
+                }}>
+                <h3
+                    style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 19,
+                        fontWeight: 500,
+                        color: "var(--ink)",
+                    }}>
+                    Currency converter
+                </h3>
+                {dateStr && (
+                    <span
+                        style={{
+                            fontSize: 11,
+                            color: isStale ? "var(--red)" : "var(--ink-4)",
+                            fontWeight: isStale ? 500 : 300,
+                        }}>
+                        {isStale ? "offline cache" : `Rates: ${dateStr}`}
+                    </span>
+                )}
+            </div>
+
+            {/* EUR input */}
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    background: "var(--stone)",
+                    borderRadius: "var(--r-sm)",
+                    padding: "12px 16px",
+                    marginBottom: 16,
+                    border: "1px solid var(--border)",
+                }}>
+                <span
+                    style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 26,
+                        fontWeight: 500,
+                        color: "var(--red)",
+                        lineHeight: 1,
+                        flexShrink: 0,
+                    }}>
+                    €
+                </span>
+                <input
+                    type='number'
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    min='0'
+                    step='any'
+                    placeholder='Enter amount'
+                    aria-label='Amount in Euro'
+                    style={{
+                        flex: 1,
+                        background: "none",
+                        border: "none",
+                        outline: "none",
+                        fontFamily: "var(--font-display)",
+                        fontSize: 28,
+                        fontWeight: 500,
+                        color: "var(--ink)",
+                        width: 0,
+                        minWidth: 0,
+                    }}
+                />
+                <span
+                    style={{
+                        fontSize: 13,
+                        color: "var(--ink-3)",
+                        fontWeight: 400,
+                        flexShrink: 0,
+                    }}>
+                    EUR
+                </span>
+            </div>
+
+            {/* Rates grid */}
+            {rates ? (
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    {CURRENCIES.map((cur, i) => {
+                        const rate = rates[cur.code];
+                        const converted = rate ? parsed * rate : null;
+                        return (
+                            <div
+                                key={cur.code}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    padding: "10px 0",
+                                    borderTop:
+                                        i > 0
+                                            ? "1px solid var(--border)"
+                                            : "none",
+                                }}>
+                                <div>
+                                    <p
+                                        style={{
+                                            fontSize: 14,
+                                            fontWeight: 500,
+                                            color: "var(--ink)",
+                                        }}>
+                                        {cur.code}
+                                    </p>
+                                    <p
+                                        style={{
+                                            fontSize: 12,
+                                            color: "var(--ink-4)",
+                                            fontWeight: 300,
+                                        }}>
+                                        {cur.name}
+                                    </p>
+                                </div>
+                                <p
+                                    style={{
+                                        fontFamily: "var(--font-display)",
+                                        fontSize: 20,
+                                        fontWeight: 500,
+                                        color: "var(--ink)",
+                                    }}>
+                                    {converted !== null
+                                        ? formatted(converted)
+                                        : "—"}
+                                </p>
+                            </div>
+                        );
+                    })}
+                </div>
+            ) : (
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "20px 0",
+                        gap: 10,
+                    }}>
+                    <div
+                        style={{
+                            width: 14,
+                            height: 14,
+                            borderRadius: "50%",
+                            border: "2px solid var(--border)",
+                            borderTopColor: "var(--red)",
+                            animation: "spin 0.8s linear infinite",
+                        }}
+                    />
+                    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+                    <p style={{ fontSize: 14, color: "var(--ink-4)" }}>
+                        Loading rates...
+                    </p>
+                </div>
+            )}
+        </InfoCard>
+    );
+}
+
 export default function Practical() {
     const { largeText, toggle } = useFontSizeContext();
+    const { weather, isStale: weatherStale } = useWeather();
+    const { rates, updatedAt, isStale: ratesStale } = useCurrency();
 
     return (
         <div>
@@ -128,69 +499,10 @@ export default function Practical() {
             />
 
             <div style={{ padding: "20px 20px 0" }}>
-                {/* ── Weather card ── */}
-                <div
-                    style={{
-                        background:
-                            "linear-gradient(135deg, var(--red), #A0102A)",
-                        borderRadius: "var(--r-md)",
-                        padding: 18,
-                        marginBottom: 20,
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                    }}>
-                    <div>
-                        <p
-                            style={{
-                                fontSize: 13,
-                                color: "rgba(255,255,255,0.7)",
-                                fontWeight: 400,
-                                marginBottom: 2,
-                            }}>
-                            Valletta, Malta
-                        </p>
-                        <p
-                            style={{
-                                fontFamily: "var(--font-display)",
-                                fontSize: 52,
-                                fontWeight: 400,
-                                color: "white",
-                                lineHeight: 1,
-                            }}>
-                            28°
-                        </p>
-                        <p
-                            style={{
-                                fontSize: 13,
-                                color: "rgba(255,255,255,0.8)",
-                                fontWeight: 300,
-                                marginTop: 4,
-                            }}>
-                            Sunny · Light breeze
-                        </p>
-                    </div>
-                    <svg
-                        width='52'
-                        height='52'
-                        viewBox='0 0 48 48'
-                        fill='none'
-                        stroke='rgba(255,255,255,0.65)'
-                        strokeWidth='1.5'
-                        strokeLinecap='round'>
-                        <circle cx='24' cy='24' r='10' />
-                        <line x1='24' y1='4' x2='24' y2='10' />
-                        <line x1='24' y1='38' x2='24' y2='44' />
-                        <line x1='4' y1='24' x2='10' y2='24' />
-                        <line x1='38' y1='24' x2='44' y2='24' />
-                        <line x1='8.7' y1='8.7' x2='13' y2='13' />
-                        <line x1='35' y1='35' x2='39.3' y2='39.3' />
-                        <line x1='39.3' y1='8.7' x2='35' y2='13' />
-                        <line x1='13' y1='35' x2='8.7' y2='39.3' />
-                    </svg>
-                </div>
+                {/* Live weather */}
+                <WeatherCard weather={weather} isStale={weatherStale} />
 
-                {/* ── Emergency numbers ── */}
+                {/* Emergency numbers */}
                 <SectionTitle>Emergency numbers</SectionTitle>
                 {emergency.map((item) => (
                     <div
@@ -252,13 +564,24 @@ export default function Practical() {
                                 textDecoration: "none",
                                 flexShrink: 0,
                                 fontFamily: "var(--font-body)",
+                                minHeight: 40,
+                                display: "flex",
+                                alignItems: "center",
                             }}>
                             Call
                         </a>
                     </div>
                 ))}
 
-                {/* ── Money ── */}
+                {/* Currency converter */}
+                <SectionTitle>Currency converter</SectionTitle>
+                <CurrencyConverter
+                    rates={rates}
+                    updatedAt={updatedAt}
+                    isStale={ratesStale}
+                />
+
+                {/* Money */}
                 <SectionTitle>Money &amp; currency</SectionTitle>
                 <InfoCard title='Currency: Euro (€)'>
                     <p
@@ -271,11 +594,11 @@ export default function Practical() {
                         Malta uses the Euro. ATMs are widely available in
                         Valletta, Sliema and St Julian's. Most restaurants and
                         shops accept Visa/Mastercard. Tip 10% in restaurants if
-                        service is not included.
+                        not included.
                     </p>
                 </InfoCard>
 
-                {/* ── SIM ── */}
+                {/* SIM */}
                 <SectionTitle>SIM &amp; internet</SectionTitle>
                 <InfoCard title='Stay connected'>
                     <p
@@ -288,11 +611,11 @@ export default function Practical() {
                         EU roaming applies for EU phones — no extra charge.
                         Non-EU visitors: buy a GO or Epic prepaid SIM at the
                         airport (from €10, includes 5GB data). Free Wi-Fi in
-                        most cafés and the course venue.
+                        most cafés and at the course venue.
                     </p>
                 </InfoCard>
 
-                {/* ── Phrases ── */}
+                {/* Phrases */}
                 <SectionTitle>Useful Maltese phrases</SectionTitle>
                 <InfoCard>
                     <table
@@ -333,7 +656,7 @@ export default function Practical() {
                     </table>
                 </InfoCard>
 
-                {/* ── Display settings ── */}
+                {/* Text size toggle */}
                 <SectionTitle>Display</SectionTitle>
                 <div
                     style={{
@@ -350,7 +673,6 @@ export default function Practical() {
                             gap: 14,
                             padding: "16px 18px",
                         }}>
-                        {/* Aa icon */}
                         <div
                             style={{
                                 width: 44,
@@ -374,13 +696,12 @@ export default function Practical() {
                                         ? "var(--red)"
                                         : "var(--ink-3)",
                                     lineHeight: 1,
-                                    transition: "color 0.2s",
                                     userSelect: "none",
+                                    transition: "color 0.2s",
                                 }}>
                                 Aa
                             </span>
                         </div>
-
                         <div style={{ flex: 1 }}>
                             <p
                                 style={{
@@ -402,8 +723,6 @@ export default function Practical() {
                                     : "Normal — default size"}
                             </p>
                         </div>
-
-                        {/* Toggle switch */}
                         <button
                             role='switch'
                             aria-checked={largeText}
@@ -440,8 +759,6 @@ export default function Practical() {
                             />
                         </button>
                     </div>
-
-                    {/* Hint row */}
                     <div
                         style={{
                             padding: "10px 18px 14px",
@@ -455,14 +772,14 @@ export default function Practical() {
                             style={{
                                 fontSize: 12,
                                 fontWeight: 300,
+                                lineHeight: 1.55,
                                 color: largeText
                                     ? "var(--red-dark)"
                                     : "var(--ink-3)",
-                                lineHeight: 1.55,
                                 transition: "color 0.2s",
                             }}>
                             {largeText
-                                ? "Large text is on — all content in the app is scaled up for easier reading."
+                                ? "Large text is on — all content is scaled up for easier reading."
                                 : "Turn on large text if you find the default size hard to read."}
                         </p>
                     </div>

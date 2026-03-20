@@ -1,87 +1,165 @@
 import { useNavigate } from "react-router-dom";
+import { useWeather } from "../hooks/useWeather";
 
-const QuickTile = ({ icon, title, subtitle, onClick }) => (
-    <div
-        className='tap-active'
-        onClick={onClick}
-        style={{
-            background: "var(--white)",
-            borderRadius: "var(--r-md)",
-            padding: 16,
-            cursor: "pointer",
-            border: "1px solid var(--border)",
-            display: "flex",
-            flexDirection: "column",
-            gap: 10,
-        }}>
+function WeatherIcon({ icon, size = 18 }) {
+    if (icon === "sun")
+        return (
+            <svg
+                width={size}
+                height={size}
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.8)'
+                strokeWidth='1.8'
+                strokeLinecap='round'>
+                <circle cx='12' cy='12' r='5' />
+                <line x1='12' y1='1' x2='12' y2='3' />
+                <line x1='12' y1='21' x2='12' y2='23' />
+                <line x1='4.22' y1='4.22' x2='5.64' y2='5.64' />
+                <line x1='18.36' y1='18.36' x2='19.78' y2='19.78' />
+                <line x1='1' y1='12' x2='3' y2='12' />
+                <line x1='21' y1='12' x2='23' y2='12' />
+                <line x1='4.22' y1='19.78' x2='5.64' y2='18.36' />
+                <line x1='18.36' y1='5.64' x2='19.78' y2='4.22' />
+            </svg>
+        );
+    if (icon === "rain")
+        return (
+            <svg
+                width={size}
+                height={size}
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.8)'
+                strokeWidth='1.8'
+                strokeLinecap='round'>
+                <line x1='16' y1='13' x2='16' y2='21' />
+                <line x1='8' y1='13' x2='8' y2='21' />
+                <line x1='12' y1='15' x2='12' y2='23' />
+                <path d='M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25' />
+            </svg>
+        );
+    if (icon === "storm")
+        return (
+            <svg
+                width={size}
+                height={size}
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgba(255,255,255,0.8)'
+                strokeWidth='1.8'
+                strokeLinecap='round'>
+                <path d='M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9' />
+                <polyline points='13 11 9 17 15 17 11 23' />
+            </svg>
+        );
+    // cloud (default)
+    return (
+        <svg
+            width={size}
+            height={size}
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='rgba(255,255,255,0.8)'
+            strokeWidth='1.8'
+            strokeLinecap='round'>
+            <path d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z' />
+        </svg>
+    );
+}
+
+function QuickTile({ icon, title, subtitle, onClick }) {
+    return (
         <div
+            className='tap-active'
+            onClick={onClick}
+            role='button'
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && onClick?.()}
             style={{
-                width: 40,
-                height: 40,
-                borderRadius: "var(--r-sm)",
-                background: "var(--red-light)",
+                background: "var(--white)",
+                borderRadius: "var(--r-md)",
+                padding: 16,
+                cursor: "pointer",
+                border: "1px solid var(--border)",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                flexDirection: "column",
+                gap: 10,
+                minHeight: 100,
             }}>
-            <span
+            <div
                 style={{
-                    width: 20,
-                    height: 20,
-                    display: "block",
-                    stroke: "var(--red)",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "var(--r-sm)",
+                    background: "var(--red-light)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                 }}>
-                {icon}
-            </span>
+                <span
+                    style={{
+                        width: 20,
+                        height: 20,
+                        display: "block",
+                        stroke: "var(--red)",
+                    }}>
+                    {icon}
+                </span>
+            </div>
+            <div>
+                <p
+                    style={{
+                        fontSize: 14,
+                        fontWeight: 500,
+                        color: "var(--ink)",
+                    }}>
+                    {title}
+                </p>
+                <p
+                    style={{
+                        fontSize: 12,
+                        color: "var(--ink-3)",
+                        fontWeight: 300,
+                        marginTop: 1,
+                    }}>
+                    {subtitle}
+                </p>
+            </div>
         </div>
-        <div>
-            <p style={{ fontSize: 14, fontWeight: 500, color: "var(--ink)" }}>
-                {title}
-            </p>
-            <p
-                style={{
-                    fontSize: 12,
-                    color: "var(--ink-3)",
-                    fontWeight: 300,
-                    marginTop: 1,
-                }}>
-                {subtitle}
-            </p>
-        </div>
-    </div>
-);
+    );
+}
 
 export default function Home() {
     const navigate = useNavigate();
+    const { weather, isStale } = useWeather();
 
     return (
         <div>
             {/* Hero */}
             <div
                 style={{
-                    height: 220,
                     background: "var(--red)",
                     position: "relative",
                     overflow: "hidden",
+                    padding: "36px 24px 0",
                 }}>
-                {/* Diagonal pattern */}
                 <div
                     style={{
                         position: "absolute",
                         inset: 0,
-                        opacity: 0.1,
+                        opacity: 0.09,
                         backgroundImage:
-                            "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
+                            "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)",
                         backgroundSize: "14px 14px",
                     }}
                 />
-                {/* Faint cross — George Cross nod */}
                 <div
                     style={{
                         position: "absolute",
-                        top: 20,
-                        left: 24,
-                        opacity: 0.18,
+                        top: 16,
+                        right: 20,
+                        opacity: 0.14,
                         width: 48,
                         height: 48,
                     }}>
@@ -108,48 +186,100 @@ export default function Home() {
                         }}
                     />
                 </div>
-                {/* Gradient overlay + text */}
+
+                <h1
+                    style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 38,
+                        fontWeight: 500,
+                        color: "white",
+                        lineHeight: 1.05,
+                        letterSpacing: "-0.01em",
+                        position: "relative",
+                    }}>
+                    Welcome
+                    <br />
+                    to Malta
+                </h1>
+                <p
+                    style={{
+                        fontSize: 13,
+                        color: "rgba(255,255,255,0.72)",
+                        marginTop: 4,
+                        fontWeight: 300,
+                        position: "relative",
+                        paddingBottom: 16,
+                    }}>
+                    Your guide to the Maltese Islands
+                </p>
+
+                {/* Live weather strip inside hero */}
+                {weather && (
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 12,
+                            background: "rgba(0,0,0,0.2)",
+                            borderRadius: "var(--r-sm)",
+                            padding: "10px 14px",
+                            marginBottom: 0,
+                            position: "relative",
+                        }}>
+                        <WeatherIcon icon={weather.icon} size={22} />
+                        <div>
+                            <p
+                                style={{
+                                    fontSize: 18,
+                                    fontWeight: 500,
+                                    color: "white",
+                                    lineHeight: 1,
+                                }}>
+                                {weather.temp}°C
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: 11,
+                                    color: "rgba(255,255,255,0.65)",
+                                    fontWeight: 300,
+                                    marginTop: 1,
+                                }}>
+                                {weather.desc} · {weather.wind} km/h
+                                {isStale && " · last saved"}
+                            </p>
+                        </div>
+                        <p
+                            style={{
+                                marginLeft: "auto",
+                                fontSize: 11,
+                                color: "rgba(255,255,255,0.5)",
+                                fontWeight: 300,
+                            }}>
+                            Valletta
+                        </p>
+                    </div>
+                )}
+
+                {/* White wave cutoff */}
                 <div
                     style={{
-                        position: "absolute",
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        padding: "20px 24px",
-                        background:
-                            "linear-gradient(to top, rgba(140,10,25,0.82) 0%, transparent 100%)",
-                    }}>
-                    <h1
-                        style={{
-                            fontFamily: "var(--font-display)",
-                            fontSize: 36,
-                            fontWeight: 500,
-                            color: "white",
-                            lineHeight: 1.1,
-                            letterSpacing: "-0.01em",
-                        }}>
-                        Welcome
-                        <br />
-                        to Malta
-                    </h1>
-                    <p
-                        style={{
-                            fontSize: 13,
-                            color: "rgba(255,255,255,0.75)",
-                            marginTop: 4,
-                            fontWeight: 300,
-                        }}>
-                        Your guide to the Maltese Islands
-                    </p>
-                </div>
+                        height: 16,
+                        background: "var(--cream)",
+                        marginTop: 16,
+                        marginLeft: -24,
+                        marginRight: -24,
+                    }}
+                />
             </div>
 
             {/* Body */}
-            <div style={{ padding: "20px 20px 0" }}>
+            <div style={{ padding: "4px 20px 0" }}>
                 {/* Emergency strip */}
                 <div
                     className='tap-active'
                     onClick={() => navigate("/practical")}
+                    role='button'
+                    tabIndex={0}
                     style={{
                         display: "flex",
                         alignItems: "center",
@@ -214,7 +344,7 @@ export default function Home() {
                     </svg>
                 </div>
 
-                {/* Quick access */}
+                {/* Quick tiles */}
                 <p
                     style={{
                         fontSize: 11,
@@ -226,6 +356,7 @@ export default function Home() {
                     }}>
                     Explore Malta
                 </p>
+
                 <div
                     style={{
                         display: "grid",
@@ -296,7 +427,7 @@ export default function Home() {
                     <QuickTile
                         onClick={() => navigate("/practical")}
                         title='Practical'
-                        subtitle='Currency, SIM & tips'
+                        subtitle='Currency, SIM & info'
                         icon={
                             <svg
                                 viewBox='0 0 24 24'
@@ -313,7 +444,7 @@ export default function Home() {
                     />
                 </div>
 
-                {/* Today's tip */}
+                {/* Tip */}
                 <p
                     style={{
                         fontSize: 11,
