@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const STORAGE_KEY = "malta_app_onboarded";
+const STORAGE_KEY = "malta-app-onboarded";
 
 const steps = [
     {
         icon: (
             <svg
-                width='28'
-                height='28'
+                width='26'
+                height='26'
                 viewBox='0 0 24 24'
                 fill='none'
-                stroke='white'
+                stroke='var(--red)'
                 strokeWidth='1.8'
                 strokeLinecap='round'
                 strokeLinejoin='round'>
@@ -24,16 +24,16 @@ const steps = [
             </svg>
         ),
         title: "Works without internet",
-        body: "Everything — maps, transport, emergency numbers — is saved to your device on first open. No signal needed.",
+        desc: "All transport, maps, and emergency info are saved on your device. No signal needed.",
     },
     {
         icon: (
             <svg
-                width='28'
-                height='28'
+                width='26'
+                height='26'
                 viewBox='0 0 24 24'
                 fill='none'
-                stroke='white'
+                stroke='var(--red)'
                 strokeWidth='1.8'
                 strokeLinecap='round'
                 strokeLinejoin='round'>
@@ -41,226 +41,209 @@ const steps = [
                 <path d='M7 11V7a5 5 0 0 1 10 0v4' />
             </svg>
         ),
-        title: "No login needed",
-        body: "Open the app and go. No account, no password, no sign-up. Your device, your guide.",
+        title: "No login required",
+        desc: "Open the app and go. No account, no password, no waiting.",
     },
     {
         icon: (
             <svg
-                width='28'
-                height='28'
+                width='26'
+                height='26'
                 viewBox='0 0 24 24'
                 fill='none'
-                stroke='white'
+                stroke='var(--red)'
                 strokeWidth='1.8'
                 strokeLinecap='round'
                 strokeLinejoin='round'>
-                <path d='M12 2L2 7v10c0 5 10 5 10 5s10 0 10-5V7L12 2z' />
-                <line x1='12' y1='8' x2='12' y2='13' />
-                <circle cx='12' cy='16' r='0.5' fill='white' />
+                <path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z' />
             </svg>
         ),
-        title: "Emergency info is one tap away",
-        body: "Tap the red strip on the home screen or the Info tab at any time to reach emergency numbers instantly.",
-    },
-    {
-        icon: (
-            <svg
-                width='28'
-                height='28'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='white'
-                strokeWidth='1.8'
-                strokeLinecap='round'
-                strokeLinejoin='round'>
-                <circle cx='12' cy='12' r='10' />
-                <polyline points='12 6 12 12 16 14' />
-            </svg>
-        ),
-        title: "Built for your course stay",
-        body: "Transport directions, nearby places, and maps are all oriented from your course venue in Valletta.",
+        title: "Emergency contacts one tap away",
+        desc: "Tap the Info tab at any time to call 112 or Mater Dei Hospital instantly.",
     },
 ];
 
-export default function Onboarding() {
-    const [visible, setVisible] = useState(false);
-    const [exiting, setExiting] = useState(false);
+const EUROPASS_LOGO =
+    "https://www.teacheracademy.eu/wp-content/themes/epta/img/logo-europass-teacher-academy.svg";
+const HEADSTART_LOGO =
+    "https://headstart.technology/wp-content/uploads/2019/05/Headstart-logo-05.png";
 
-    useEffect(() => {
-        const done = localStorage.getItem(STORAGE_KEY);
-        if (!done) setVisible(true);
-    }, []);
-
-    const handleDismiss = () => {
-        setExiting(true);
-        setTimeout(() => {
-            localStorage.setItem(STORAGE_KEY, "true");
-            setVisible(false);
-        }, 380);
-    };
+export default function OnboardingScreen() {
+    const [visible, setVisible] = useState(() => {
+        try {
+            return localStorage.getItem(STORAGE_KEY) !== "true";
+        } catch {
+            return false;
+        }
+    });
+    const [leaving, setLeaving] = useState(false);
 
     if (!visible) return null;
 
+    const handleDone = () => {
+        setLeaving(true);
+        try {
+            localStorage.setItem(STORAGE_KEY, "true");
+        } catch {}
+        setTimeout(() => setVisible(false), 380);
+    };
+
     return (
         <div
+            role='dialog'
+            aria-modal='true'
+            aria-label='Welcome to Malta Guide'
             style={{
                 position: "fixed",
                 inset: 0,
-                zIndex: 900,
+                zIndex: 2000,
                 display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "center",
+                flexDirection: "column",
+                background: "var(--cream)",
+                opacity: leaving ? 0 : 1,
+                transform: leaving ? "scale(0.97)" : "scale(1)",
+                transition: "opacity 0.35s ease, transform 0.35s ease",
+                overflowY: "auto",
             }}>
-            {/* Backdrop */}
-            <div
-                onClick={handleDismiss}
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "rgba(28,25,23,0.6)",
-                    opacity: exiting ? 0 : 1,
-                    transition: "opacity 0.35s ease",
-                }}
-            />
-
-            {/* Sheet */}
+            {/* Red hero */}
             <div
                 style={{
+                    background: "var(--red)",
+                    padding: "52px 32px 32px",
                     position: "relative",
-                    width: "100%",
-                    maxWidth: 480,
-                    background: "var(--cream)",
-                    borderRadius: "28px 28px 0 0",
-                    padding: "0 0 40px",
-                    transform: exiting ? "translateY(100%)" : "translateY(0)",
-                    transition: "transform 0.38s cubic-bezier(0.4, 0, 0.2, 1)",
-                    willChange: "transform",
                     overflow: "hidden",
+                    flexShrink: 0,
                 }}>
-                {/* Red hero strip */}
+                {/* Diagonal pattern */}
                 <div
                     style={{
-                        background: "var(--red)",
-                        padding: "32px 28px 28px",
-                        position: "relative",
-                        overflow: "hidden",
+                        position: "absolute",
+                        inset: 0,
+                        opacity: 0.09,
+                        backgroundImage:
+                            "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)",
+                        backgroundSize: "14px 14px",
+                    }}
+                />
+                {/* Faint George Cross */}
+                <div
+                    style={{
+                        position: "absolute",
+                        top: 20,
+                        right: 24,
+                        opacity: 0.14,
+                        width: 52,
+                        height: 52,
                     }}>
-                    {/* Subtle pattern */}
                     <div
                         style={{
                             position: "absolute",
-                            inset: 0,
-                            opacity: 0.08,
-                            backgroundImage:
-                                "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-                            backgroundSize: "14px 14px",
+                            width: 7,
+                            height: 52,
+                            left: 22,
+                            top: 0,
+                            background: "white",
+                            borderRadius: 2,
                         }}
                     />
-                    {/* George Cross hint */}
                     <div
                         style={{
                             position: "absolute",
-                            top: 16,
-                            right: 24,
-                            opacity: 0.15,
-                        }}>
-                        <div
-                            style={{
-                                position: "absolute",
-                                width: 5,
-                                height: 44,
-                                left: 19,
-                                top: 0,
-                                background: "white",
-                                borderRadius: 2,
-                            }}
-                        />
-                        <div
-                            style={{
-                                position: "absolute",
-                                width: 44,
-                                height: 5,
-                                top: 19,
-                                left: 0,
-                                background: "white",
-                                borderRadius: 2,
-                            }}
-                        />
-                    </div>
-
-                    <div style={{ position: "relative" }}>
-                        <p
-                            style={{
-                                fontSize: 11,
-                                fontWeight: 500,
-                                color: "rgba(255,255,255,0.65)",
-                                letterSpacing: "0.1em",
-                                textTransform: "uppercase",
-                                marginBottom: 6,
-                            }}>
-                            Welcome
-                        </p>
-                        <h1
-                            style={{
-                                fontFamily: "var(--font-display)",
-                                fontSize: 36,
-                                fontWeight: 500,
-                                color: "white",
-                                lineHeight: 1.1,
-                                letterSpacing: "-0.01em",
-                            }}>
-                            Your Malta
-                            <br />
-                            Guide
-                        </h1>
-                        <p
-                            style={{
-                                fontSize: 13,
-                                color: "rgba(255,255,255,0.72)",
-                                fontWeight: 300,
-                                marginTop: 8,
-                            }}>
-                            A few things to know before you start
-                        </p>
-                    </div>
+                            width: 52,
+                            height: 7,
+                            top: 22,
+                            left: 0,
+                            background: "white",
+                            borderRadius: 2,
+                        }}
+                    />
                 </div>
 
+                <p
+                    style={{
+                        fontSize: 11,
+                        fontWeight: 500,
+                        color: "rgba(255,255,255,0.6)",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        marginBottom: 8,
+                        fontFamily: "var(--font-body)",
+                        position: "relative",
+                    }}>
+                    Educational courses · Malta
+                </p>
+                <h1
+                    style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 38,
+                        fontWeight: 500,
+                        color: "white",
+                        lineHeight: 1.05,
+                        letterSpacing: "-0.01em",
+                        position: "relative",
+                    }}>
+                    Welcome to
+                    <br />
+                    Malta Guide
+                </h1>
+                <p
+                    style={{
+                        fontSize: 14,
+                        color: "rgba(255,255,255,0.72)",
+                        marginTop: 8,
+                        fontWeight: 300,
+                        fontFamily: "var(--font-body)",
+                        position: "relative",
+                    }}>
+                    Everything you need for your stay
+                </p>
+            </div>
+
+            {/* Body */}
+            <div style={{ padding: "24px 24px 32px" }}>
                 {/* Steps */}
-                <div style={{ padding: "24px 24px 0" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                        marginBottom: 24,
+                    }}>
                     {steps.map((step, i) => (
                         <div
                             key={i}
                             style={{
                                 display: "flex",
                                 gap: 14,
-                                paddingBottom: 18,
-                                marginBottom: i < steps.length - 1 ? 18 : 0,
-                                borderBottom:
-                                    i < steps.length - 1
-                                        ? "1px solid var(--border)"
-                                        : "none",
+                                alignItems: "flex-start",
+                                background: "var(--white)",
+                                borderRadius: "var(--r-md)",
+                                padding: "14px 16px",
+                                border: "1px solid var(--border)",
+                                opacity: 0,
+                                animation: `fadeUp 0.4s ease ${0.08 + i * 0.09}s both`,
                             }}>
                             <div
                                 style={{
-                                    width: 48,
-                                    height: 48,
-                                    borderRadius: "var(--r-md)",
-                                    background: "var(--red)",
+                                    width: 46,
+                                    height: 46,
+                                    borderRadius: 11,
+                                    background: "var(--red-light)",
+                                    flexShrink: 0,
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    flexShrink: 0,
                                 }}>
                                 {step.icon}
                             </div>
-                            <div style={{ flex: 1, paddingTop: 2 }}>
+                            <div>
                                 <p
                                     style={{
-                                        fontSize: 15,
+                                        fontSize: 14,
                                         fontWeight: 500,
                                         color: "var(--ink)",
-                                        marginBottom: 4,
+                                        marginBottom: 3,
+                                        fontFamily: "var(--font-body)",
                                     }}>
                                     {step.title}
                                 </p>
@@ -268,47 +251,161 @@ export default function Onboarding() {
                                     style={{
                                         fontSize: 13,
                                         color: "var(--ink-3)",
+                                        lineHeight: 1.55,
                                         fontWeight: 300,
-                                        lineHeight: 1.6,
+                                        fontFamily: "var(--font-body)",
                                     }}>
-                                    {step.body}
+                                    {step.desc}
                                 </p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* CTA */}
-                <div style={{ padding: "24px 24px 0" }}>
-                    <button
-                        onClick={handleDismiss}
-                        style={{
-                            width: "100%",
-                            padding: "16px",
-                            background: "var(--red)",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "var(--r-md)",
-                            fontSize: 16,
-                            fontWeight: 500,
-                            fontFamily: "var(--font-body)",
-                            cursor: "pointer",
-                            letterSpacing: "0.01em",
-                        }}>
-                        Get started
-                    </button>
+                {/* Get started button */}
+                <button
+                    onClick={handleDone}
+                    style={{
+                        width: "100%",
+                        padding: "15px 24px",
+                        background: "var(--red)",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "var(--r-md)",
+                        fontSize: 15,
+                        fontWeight: 500,
+                        fontFamily: "var(--font-body)",
+                        cursor: "pointer",
+                        boxShadow: "0 4px 16px rgba(207,20,43,0.28)",
+                        marginBottom: 8,
+                        minHeight: 52,
+                    }}
+                    onPointerDown={(e) => {
+                        e.currentTarget.style.transform = "scale(0.98)";
+                    }}
+                    onPointerUp={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                    }}>
+                    Get started
+                </button>
+
+                <p
+                    style={{
+                        textAlign: "center",
+                        fontSize: 12,
+                        color: "var(--ink-4)",
+                        marginBottom: 28,
+                        fontFamily: "var(--font-body)",
+                    }}>
+                    You won't see this again
+                </p>
+
+                {/* Partner logos */}
+                <div
+                    style={{
+                        borderTop: "1px solid var(--border)",
+                        paddingTop: 22,
+                    }}>
                     <p
                         style={{
                             textAlign: "center",
-                            fontSize: 11,
+                            fontSize: 10,
+                            fontWeight: 500,
                             color: "var(--ink-4)",
-                            marginTop: 10,
-                            fontWeight: 300,
+                            letterSpacing: "0.08em",
+                            textTransform: "uppercase",
+                            marginBottom: 16,
+                            fontFamily: "var(--font-body)",
                         }}>
-                        This message won't appear again
+                        In partnership with
                     </p>
+
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 24,
+                            flexWrap: "wrap",
+                        }}>
+                        {/* Europass Teacher Academy */}
+                        <a
+                            href='https://www.teacheracademy.eu'
+                            target='_blank'
+                            rel='noreferrer'
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                textDecoration: "none",
+                                flexShrink: 0,
+                            }}>
+                            <img
+                                src={EUROPASS_LOGO}
+                                alt='Europass Teacher Academy'
+                                style={{
+                                    height: 36,
+                                    width: "auto",
+                                    maxWidth: 160,
+                                    objectFit: "contain",
+                                    display: "block",
+                                }}
+                                onError={(e) => {
+                                    // Fallback: render text logo if image fails
+                                    e.currentTarget.style.display = "none";
+                                    e.currentTarget.parentElement.innerHTML =
+                                        '<span style="font-size:12px;font-weight:500;color:#1C1917;font-family:sans-serif">Europass Teacher Academy</span>';
+                                }}
+                            />
+                        </a>
+
+                        {/* Divider */}
+                        <div
+                            style={{
+                                width: 1,
+                                height: 28,
+                                background: "var(--border)",
+                                flexShrink: 0,
+                            }}
+                        />
+
+                        {/* Headstart Technology */}
+                        <a
+                            href='https://headstart.technology'
+                            target='_blank'
+                            rel='noreferrer'
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                textDecoration: "none",
+                                flexShrink: 0,
+                            }}>
+                            <img
+                                src={HEADSTART_LOGO}
+                                alt='Headstart Technology Ltd.'
+                                style={{
+                                    height: 36,
+                                    width: "auto",
+                                    maxWidth: 140,
+                                    objectFit: "contain",
+                                    display: "block",
+                                }}
+                                onError={(e) => {
+                                    e.currentTarget.style.display = "none";
+                                    e.currentTarget.parentElement.innerHTML =
+                                        '<span style="font-size:12px;font-weight:500;color:#1C1917;font-family:sans-serif">Headstart Technology</span>';
+                                }}
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <style>{`
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to   { opacity: 1; transform: none; }
+        }
+      `}</style>
         </div>
     );
 }
