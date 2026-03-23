@@ -26,8 +26,8 @@ export default defineConfig({
                 ],
             },
             manifest: {
-                name: "Malta Guide",
-                short_name: "Malta",
+                name: "Malta Easy",
+                short_name: "Malta Easy",
                 description: "Welcome guide for teachers visiting Malta",
                 theme_color: "#0F6E56",
                 background_color: "#ffffff",
