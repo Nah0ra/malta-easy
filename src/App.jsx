@@ -72,7 +72,7 @@ function AppShell() {
             which would break inside a transformed ancestor on iOS. */}
                 <BottomNav />
             </div>
-            <Analytics />;
+            <Analytics />
         </div>
     );
 }

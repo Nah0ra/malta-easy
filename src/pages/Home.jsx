@@ -263,6 +263,30 @@ export default function Home() {
                     </div>
                 )}
 
+                <p
+                    style={{
+                        fontSize: 13,
+                        color: "rgba(255,255,255,0.72)",
+                        marginTop: 4,
+                        fontWeight: 300,
+                        position: "relative",
+                        paddingTop: 16,
+                        textAlign: "center",
+                    }}>
+                    Developed and designed by
+                </p>
+                <p
+                    style={{
+                        fontSize: 15,
+                        color: "rgba(255,255,255,0.72)",
+                        marginTop: 2,
+                        fontWeight: 600,
+                        textAlign: "center",
+                        position: "relative",
+                    }}>
+                    Andrii Kushch & Natália Pakesová
+                </p>
+
                 <div
                     style={{
                         height: 16,
