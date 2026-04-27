@@ -150,31 +150,7 @@ export default function Transport() {
                 {/* BUS */}
                 {activeTab === "Bus" && (
                     <>
-                        <InfoCard>
-                            <p
-                                style={{
-                                    fontSize: 14,
-                                    fontWeight: 500,
-                                    color: "var(--red-dark)",
-                                    marginBottom: 4,
-                                }}>
-                                Tallinja Card — save money
-                            </p>
-                            <p
-                                style={{
-                                    fontSize: 13,
-                                    color: "var(--ink-2)",
-                                    lineHeight: 1.55,
-                                    fontWeight: 300,
-                                }}>
-                                Buy a Tallinja card at the airport kiosk (€2)
-                                and top up. Bus fare drops from €2.00 to €0.75
-                                per journey.
-                            </p>
-                        </InfoCard>
-                        {buses.map((b) => (
-                            <RouteCard key={b.number} {...b} />
-                        ))}
+
                     </>
                 )}
 
