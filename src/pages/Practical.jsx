@@ -388,6 +388,12 @@ export default function Practical() {
                         </a>
                     </div>
                 ))}
+                <SectionTitle>Medical information</SectionTitle>
+                <InfoCard>
+                    <p style={{fontSize:"15px"}}> Please note that doctors for minor ailments are available in most pharmacies at specific times </p>
+                    <br />
+                    <p style={{fontSize:"15px"}}> Owners of the <b>EU international health card</b> receive free medical treatment </p>
+                </InfoCard>
                 {/* Phrases */}
                 <SectionTitle>Useful Maltese phrases</SectionTitle>
                 <InfoCard>
