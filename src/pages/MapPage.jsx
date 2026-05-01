@@ -80,43 +80,6 @@ export default function MapPage() {
                 flexDirection: "column",
                 height: "calc(100dvh - var(--nav-h))",
             }}>
-            {/* Search */}
-            <div
-                style={{
-                    padding: "12px 20px",
-                    background: "var(--white)",
-                    borderBottom: "1px solid var(--border)",
-                    flexShrink: 0,
-                }}>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        background: "var(--stone)",
-                        borderRadius: "var(--r-sm)",
-                        padding: "10px 14px",
-                    }}>
-                    <svg
-                        width='16'
-                        height='16'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='var(--ink-3)'
-                        strokeWidth='2'>
-                        <circle cx='11' cy='11' r='8' />
-                        <line x1='21' y1='21' x2='16.65' y2='16.65' />
-                    </svg>
-                    <span
-                        style={{
-                            fontSize: 14,
-                            color: "var(--ink-4)",
-                            fontWeight: 300,
-                        }}>
-                        Search Malta...
-                    </span>
-                </div>
-            </div>
             {/* Filter chips */}
             <div
                 className='hide-scrollbar'
