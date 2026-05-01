@@ -117,7 +117,6 @@ export default function MapPage() {
                     </span>
                 </div>
             </div>
-
             {/* Filter chips */}
             <div
                 className='hide-scrollbar'
