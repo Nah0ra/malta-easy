@@ -9,7 +9,7 @@ const filters = [
     { id: "historic", label: "Historic" },
     { id: "nature", label: "Nature" },
     { id: "beaches", label: "Beaches" },
-    { id: "village", label: "Villages" },
+    { id: "shopping", label: "Shopping"}
 ];
 
 export default function Places() {

@@ -6,7 +6,7 @@
         "wikipediaTitle": "Valletta",
         "localImage": "/images/places/valletta.jpg",
         "description": "Malta's Baroque capital and UNESCO World Heritage city. Explore the Grand Harbour, St John's Co-Cathedral, and the Upper Barrakka Gardens.",
-        "tags": ["Historic", "UNESCO site", "30 min by bus"],
+        "tags": ["Historic", "UNESCO site"],
         "lat": 35.8997,
         "lng": 14.5147
     },
@@ -17,7 +17,7 @@
         "wikipediaTitle": "Mdina",
         "localImage": "/images/places/mdina.jpg",
         "description": "The Silent City — a medieval walled town perched on a hilltop. Best visited early morning before the crowds. Stunning views across the island.",
-        "tags": ["Historic", "Medieval", "Bus 51, 52"],
+        "tags": ["Historic", "Medieval"],
         "lat": 35.8878,
         "lng": 14.4025
     },
@@ -61,29 +61,27 @@
         "wikipediaTitle": "Golden Bay (Malta)",
         "localImage": "/images/places/goldenBay.jpg",
         "description": "One of Malta's most popular sandy beaches on the northwest coast. Backed by gentle dunes with sunbeds, a café, and regular bus connections.",
-        "tags": ["Beaches", "Sandy beach", "Bus 223"],
+        "tags": ["Beaches", "Sandy beach"],
         "lat": 35.9248,
         "lng": 14.3339
     },
     {
         "id": "marsaxlokk",
         "name": "Marsaxlokk",
-        "category": "village",
         "wikipediaTitle": "Marsaxlokk",
         "localImage": "/images/places/marsaxlokk.jpg",
         "description": "A traditional fishing village famous for its colourful luzzu boats. The Sunday market is a highlight — fresh fish, local produce, and crafts.",
-        "tags": ["Village", "Sunday market", "Bus 81, 85"],
+        "tags": ["Sunday market"],
         "lat": 35.8414,
         "lng": 14.5431
     },
     {
         "id": "sliema",
         "name": "Sliema",
-        "category": "village",
         "wikipediaTitle": "Sliema",
         "localImage": "/images/places/sliema.jpg",
         "description": "Malta's modern seafront strip. Great for restaurants, cafés, and evening walks along the promenade. Easy to reach by bus or the Valletta ferry.",
-        "tags": ["Village", "Restaurants", "Seafront"],
+        "tags": ["Shopping","Restaurants", "Seafront"],
         "lat": 35.9117,
         "lng": 14.5022
     }
