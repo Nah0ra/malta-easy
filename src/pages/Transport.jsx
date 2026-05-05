@@ -219,32 +219,10 @@ export default function Transport() {
                                         whiteSpace: "nowrap",
                                         fontFamily: "var(--font-body)",
                                     }}>
-                                    Open app
+                                    Visit Site
                                 </a>
                             </div>
                         ))}
-                        <InfoCard>
-                            <p
-                                style={{
-                                    fontSize: 14,
-                                    fontWeight: 500,
-                                    color: "var(--red-dark)",
-                                    marginBottom: 4,
-                                }}>
-                                Rough fare guide
-                            </p>
-                            <p
-                                style={{
-                                    fontSize: 13,
-                                    color: "var(--ink-2)",
-                                    lineHeight: 1.55,
-                                    fontWeight: 300,
-                                }}>
-                                Airport → Valletta: €15–20 · Airport → St
-                                Julian's: €18–25 · Valletta → Mdina: €12–16.
-                                Fares increase after 11 pm.
-                            </p>
-                        </InfoCard>
                     </>
                 )}
 

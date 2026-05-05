@@ -1,46 +1,8 @@
 {
-    "buses": [
-        {
-            "number": "X1",
-            "route": "Airport → Valletta",
-            "description": "Via Marsa, direct express route",
-            "price": "€0.75",
-            "frequency": "Every 20 min"
-        },
-        {
-            "number": "X2",
-            "route": "Airport → St Julian's",
-            "description": "Via Sliema, coastal route",
-            "price": "€0.75",
-            "frequency": "Every 30 min"
-        },
-        {
-            "number": "51",
-            "route": "Valletta → Mdina",
-            "description": "Via Hamrun and Qormi",
-            "price": "€0.75",
-            "frequency": "Every 15 min"
-        },
-        {
-            "number": "81",
-            "route": "Valletta → Marsaxlokk",
-            "description": "Scenic south coast route",
-            "price": "€0.75",
-            "frequency": "Every 60 min"
-        },
-        {
-            "number": "41",
-            "route": "Valletta → Ċirkewwa",
-            "description": "For Gozo ferry terminal",
-            "price": "€0.75",
-            "frequency": "Every 30 min"
-        }
-    ],
     "taxis": [
         {
             "id": "bolt",
             "name": "Bolt",
-            "description": "Most popular · €6–15 across Malta",
             "color": "#34D058",
             "textColor": "#002A00",
             "appUrl": "https://bolt.eu"
@@ -48,18 +10,16 @@
         {
             "id": "ecabs",
             "name": "eCabs Malta",
-            "description": "Official taxi app · Fixed fares",
             "color": "#1A3A8B",
             "textColor": "#FFFFFF",
             "appUrl": "https://ecabs.com.mt"
         },
         {
-            "id": "kaptain",
-            "name": "Kaptain",
-            "description": "Local option · Good for airport",
-            "color": "#FF6B2B",
+            "id": "uber",
+            "name": "Uber",
+            "color": "#000000",
             "textColor": "#FFFFFF",
-            "appUrl": "https://kaptain.app"
+            "appUrl": "https://uber.com/mt/en/"
         }
     ],
     "ferries": [
