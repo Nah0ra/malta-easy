@@ -24,17 +24,8 @@
     ],
     "ferries": [
         {
-            "name": "Malta → Gozo",
-            "route": "Ċirkewwa → Mġarr · 25 minutes",
-            "price": "€4.65",
-            "frequency": "Every 45 min",
-            "note": "Runs 6:00 – 23:00. Take bus 41 from Valletta to Ċirkewwa terminal (1h 10min, €0.75).",
-            "color": "#1A6494"
-        },
-        {
             "name": "Valletta ↔ Sliema",
-            "route": "Valletta Waterfront · 7 minutes",
-            "price": "€1.50",
+            "price": "Prices vary",
             "frequency": "Every 30 min",
             "note": "Pleasant way to cross between Valletta and Sliema. Great views of the Grand Harbour fortifications.",
             "color": "#1A6494"

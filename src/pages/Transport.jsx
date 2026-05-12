@@ -281,6 +281,20 @@ export default function Transport() {
                                             }}>
                                             {ferry.route}
                                         </p>
+                                        <a href="https://www.vallettaferryservices.com/" target='_blank' rel='noreferrer' style={{
+                                            padding: "8px 16px",
+                                            borderRadius: 100,
+                                            background: "var(--stone)",
+                                                    color: "var(--ink-2)",
+                                                    fontSize: 12,
+                                                    fontWeight: 500,
+                                                    border: "1px solid var(--border)",
+                                                    textDecoration: "none",
+                                                    whiteSpace: "nowrap",
+                                                    fontFamily: "var(--font-body)",
+                                        }}>
+                                        Visit Site
+                                        </a>
                                     </div>
                                     <div
                                         style={{
