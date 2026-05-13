@@ -291,7 +291,7 @@ export default function PlaceDetailModal({ place, onClose }) {
                                 minHeight: 44,
                                 padding: "10px 0",
                             }}>
-                            Read more on Wikipedia
+                            Learn more
                             <svg
                                 width='13'
                                 height='13'

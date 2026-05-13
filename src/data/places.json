@@ -44,15 +44,15 @@
         "lng": 14.3842
     },
     {
-        "id": "blueLagoon",
-        "name": "Blue Lagoon",
+        "id": "peterspool",
+        "name": "St. Peter's Pool",
         "category": "beaches",
         "wikipediaTitle": "Comino",
         "localImage": "/images/places/blueLagoon.jpg",
         "description": "Malta's most famous swimming spot on the tiny island of Comino. Crystal-clear turquoise water, perfect for snorkelling. Boat trips from Ċirkewwa.",
-        "tags": ["Beaches", "Comino island", "Boat trip"],
-        "lat": 36.0131,
-        "lng": 14.3364
+        "tags": ["Rocky", "Boat friendly"],
+        "lat": 35.83343513246067,
+        "lng": 14.561811677423137
     },
     {
         "id": "goldenBay",
