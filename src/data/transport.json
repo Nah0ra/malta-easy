@@ -30,15 +30,5 @@
             "note": "Pleasant way to cross between Valletta and Sliema. Great views of the Grand Harbour fortifications.",
             "color": "#1A6494"
         }
-    ],
-    "walking": {
-        "intro": "Valletta is very walkable — the entire old city is about 1km × 600m. You can walk end to end in 20 minutes.",
-        "routes": [
-            {
-                "name": "Valletta Heritage Walk",
-                "description": "City Gate → Republic Street → St John's Co-Cathedral → Upper Barrakka Gardens → Grand Harbour viewpoint. ~45 minutes, mostly flat."
-            }
-        ],
-        "warning": "Malta is very hot June–September. Carry water, wear a hat, and avoid walking midday (12–3pm). Most churches and museums are air-conditioned."
-    }
+    ]
 }

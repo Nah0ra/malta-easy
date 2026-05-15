@@ -2,7 +2,7 @@ import { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import transportData from "../data/transport.json";
 
-const tabs = ["Bus", "Taxi", "Ferry", "Walking"];
+const tabs = ["Bus", "Taxi", "Ferry"];
 
 function InfoCard({ children, style }) {
     return (
@@ -332,85 +332,6 @@ export default function Transport() {
                                 </p>
                             </div>
                         ))}
-                    </>
-                )}
-
-                {/* WALKING */}
-                {activeTab === "Walking" && (
-                    <>
-                        <InfoCard>
-                            <p
-                                style={{
-                                    fontSize: 14,
-                                    fontWeight: 500,
-                                    color: "var(--red-dark)",
-                                    marginBottom: 4,
-                                }}>
-                                Valletta is very walkable
-                            </p>
-                            <p
-                                style={{
-                                    fontSize: 13,
-                                    color: "var(--ink-2)",
-                                    lineHeight: 1.55,
-                                    fontWeight: 300,
-                                }}>
-                                {walking.intro}
-                            </p>
-                        </InfoCard>
-                        {walking.routes.map((route, i) => (
-                            <div
-                                key={i}
-                                style={{
-                                    background: "var(--white)",
-                                    borderRadius: "var(--r-md)",
-                                    padding: 16,
-                                    border: "1px solid var(--border)",
-                                }}>
-                                <p
-                                    style={{
-                                        fontSize: 14,
-                                        fontWeight: 500,
-                                        color: "var(--ink)",
-                                        marginBottom: 6,
-                                    }}>
-                                    {route.name}
-                                </p>
-                                <p
-                                    style={{
-                                        fontSize: 13,
-                                        color: "var(--ink-3)",
-                                        fontWeight: 300,
-                                        lineHeight: 1.6,
-                                    }}>
-                                    {route.description}
-                                </p>
-                            </div>
-                        ))}
-                        <InfoCard
-                            style={{
-                                background: "var(--stone)",
-                                borderColor: "var(--border)",
-                            }}>
-                            <p
-                                style={{
-                                    fontSize: 14,
-                                    fontWeight: 500,
-                                    color: "var(--ink)",
-                                    marginBottom: 4,
-                                }}>
-                                Summer heat warning
-                            </p>
-                            <p
-                                style={{
-                                    fontSize: 13,
-                                    color: "var(--ink-2)",
-                                    lineHeight: 1.55,
-                                    fontWeight: 300,
-                                }}>
-                                {walking.warning}
-                            </p>
-                        </InfoCard>
                     </>
                 )}
             </div>
