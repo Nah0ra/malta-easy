@@ -16,7 +16,7 @@ export default function PlaceDetailModal({ place, onClose }) {
 
     // localImage served from public/ → always offline.
     // Fall back to Wikipedia URL if local file isn't present yet.
-    const imageSrc = place?.localImage || data?.imageUrl || null;
+    const imageSrc = place?.localImage || null;
 
     useEffect(() => {
         if (isOpen) document.body.style.overflow = "hidden";

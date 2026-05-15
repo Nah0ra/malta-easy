@@ -1,8 +1,6 @@
 import { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import { useFontSizeContext } from "../context/FontSizeContext";
-import { useWeather } from "../hooks/useWeather";
-import { useCurrency, CURRENCIES } from "../hooks/useCurrency";
 import emergency from "../data/emergency.json";
 
 const phrases = [
@@ -120,193 +118,8 @@ function InfoCard({ title, children }) {
     );
 }
 
-function WeatherCard({ weather, isStale }) {
-    const icons = {
-        sun: (
-            <svg
-                width='48'
-                height='48'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='rgba(255,255,255,0.65)'
-                strokeWidth='1.5'
-                strokeLinecap='round'>
-                <circle cx='12' cy='12' r='5' />
-                <line x1='12' y1='1' x2='12' y2='3' />
-                <line x1='12' y1='21' x2='12' y2='23' />
-                <line x1='4.22' y1='4.22' x2='5.64' y2='5.64' />
-                <line x1='18.36' y1='18.36' x2='19.78' y2='19.78' />
-                <line x1='1' y1='12' x2='3' y2='12' />
-                <line x1='21' y1='12' x2='23' y2='12' />
-                <line x1='4.22' y1='19.78' x2='5.64' y2='18.36' />
-                <line x1='18.36' y1='5.64' x2='19.78' y2='4.22' />
-            </svg>
-        ),
-        cloud: (
-            <svg
-                width='48'
-                height='48'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='rgba(255,255,255,0.65)'
-                strokeWidth='1.5'
-                strokeLinecap='round'>
-                <path d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z' />
-            </svg>
-        ),
-        rain: (
-            <svg
-                width='48'
-                height='48'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='rgba(255,255,255,0.65)'
-                strokeWidth='1.5'
-                strokeLinecap='round'>
-                <line x1='16' y1='13' x2='16' y2='21' />
-                <line x1='8' y1='13' x2='8' y2='21' />
-                <line x1='12' y1='15' x2='12' y2='23' />
-                <path d='M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25' />
-            </svg>
-        ),
-        storm: (
-            <svg
-                width='48'
-                height='48'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='rgba(255,255,255,0.65)'
-                strokeWidth='1.5'
-                strokeLinecap='round'>
-                <path d='M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9' />
-                <polyline points='13 11 9 17 15 17 11 23' />
-            </svg>
-        ),
-    };
-
-    if (!weather) {
-        return (
-            <div
-                style={{
-                    background: "linear-gradient(135deg, var(--red), #A0102A)",
-                    borderRadius: "var(--r-md)",
-                    padding: 18,
-                    marginBottom: 20,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                }}>
-                <div
-                    style={{
-                        width: 16,
-                        height: 16,
-                        borderRadius: "50%",
-                        border: "2px solid rgba(255,255,255,0.4)",
-                        borderTopColor: "white",
-                        animation: "spin 0.8s linear infinite",
-                    }}
-                />
-                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                <p
-                    style={{
-                        color: "rgba(255,255,255,0.7)",
-                        fontSize: 14,
-                        fontWeight: 300,
-                    }}>
-                    Loading weather...
-                </p>
-            </div>
-        );
-    }
-
-    const updatedStr = weather.fetchedAt
-        ? new Date(weather.fetchedAt).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-          })
-        : null;
-
-    return (
-        <div
-            style={{
-                background: "linear-gradient(135deg, var(--red), #A0102A)",
-                borderRadius: "var(--r-md)",
-                padding: 18,
-                marginBottom: 20,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-            }}>
-            <div>
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        marginBottom: 2,
-                    }}>
-                    <p
-                        style={{
-                            fontSize: 13,
-                            color: "rgba(255,255,255,0.7)",
-                            fontWeight: 400,
-                        }}>
-                        Valletta, Malta
-                    </p>
-                    {isStale && (
-                        <span
-                            style={{
-                                fontSize: 10,
-                                padding: "1px 7px",
-                                borderRadius: 100,
-                                background: "rgba(255,255,255,0.18)",
-                                color: "rgba(255,255,255,0.7)",
-                            }}>
-                            offline
-                        </span>
-                    )}
-                </div>
-                <p
-                    style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: 52,
-                        fontWeight: 400,
-                        color: "white",
-                        lineHeight: 1,
-                    }}>
-                    {weather.temp}°
-                </p>
-                <p
-                    style={{
-                        fontSize: 13,
-                        color: "rgba(255,255,255,0.8)",
-                        fontWeight: 300,
-                        marginTop: 4,
-                    }}>
-                    {weather.desc} · {weather.wind} km/h
-                </p>
-                {updatedStr && (
-                    <p
-                        style={{
-                            fontSize: 11,
-                            color: "rgba(255,255,255,0.45)",
-                            marginTop: 4,
-                        }}>
-                        Updated {updatedStr}
-                    </p>
-                )}
-            </div>
-            {icons[weather.icon] || icons.cloud}
-        </div>
-    );
-}
-
-
 export default function Practical() {
     const { largeText, toggle } = useFontSizeContext();
-    const { weather, isStale: weatherStale } = useWeather();
-    const { rates, updatedAt, isStale: ratesStale } = useCurrency();
-
     return (
         <div>
             <ScreenHeader
@@ -315,9 +128,6 @@ export default function Practical() {
             />
 
             <div style={{ padding: "20px 20px 0" }}>
-                {/* Live weather */}
-                <WeatherCard weather={weather} isStale={weatherStale} />
-
                 {/* Emergency numbers */}
                 <SectionTitle>Emergency numbers</SectionTitle>
                 {emergency.map((item) => (
