@@ -141,7 +141,7 @@ export default function Home() {
                         fontSize: 13,
                         color: "rgba(255,255,255,0.72)",
                         marginTop: 4,
-                        fontWeight: 300,
+                        fontWeight: 400,
                         position: "relative",
                         paddingBottom: 16,
                     }}>
@@ -484,7 +484,7 @@ export default function Home() {
                     <QuickTile
                         onClick={() => navigate("/practical")}
                         title='Practical'
-                        subtitle='Currency, SIM & info'
+                        subtitle='Emergency numbers and general info'
                         icon={
                             <svg
                                 viewBox='0 0 24 24'
@@ -511,7 +511,7 @@ export default function Home() {
                         textTransform: "uppercase",
                         marginBottom: 12,
                     }}>
-                    Today's tip
+                    Today's tips
                 </p>
                 <div
                     style={{

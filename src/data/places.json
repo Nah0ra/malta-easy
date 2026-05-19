@@ -47,10 +47,10 @@
         "id": "peterspool",
         "name": "St. Peter's Pool",
         "category": "beaches",
-        "wikipediaTitle": "Comino",
-        "localImage": "/images/places/blueLagoon.jpg",
-        "description": "Malta's most famous swimming spot on the tiny island of Comino. Crystal-clear turquoise water, perfect for snorkelling. Boat trips from Ċirkewwa.",
-        "tags": ["Rocky", "Boat friendly"],
+        "wikipediaTitle": "St Peter's Pool, Malta",
+        "localImage": "/images/places/PetersPool.jpg",
+        "description": "The bay is a common attraction among tourists looking to snorkel",
+        "tags": ["Beach", "Rocky beach","Snorkeling"],
         "lat": 35.83343513246067,
         "lng": 14.561811677423137
     },
@@ -61,9 +61,9 @@
         "wikipediaTitle": "Golden Bay (Malta)",
         "localImage": "/images/places/goldenBay.jpg",
         "description": "One of Malta's most popular sandy beaches on the northwest coast. Backed by gentle dunes with sunbeds, a café, and regular bus connections.",
-        "tags": ["Beaches", "Sandy beach"],
-        "lat": 35.9248,
-        "lng": 14.3339
+        "tags": ["Beach", "Sandy beach"],
+        "lat": 35.93404759452658,
+        "lng": 14.344520960092833
     },
     {
         "id": "marsaxlokk",
@@ -84,5 +84,60 @@
         "tags": ["Shopping","Restaurants", "Seafront"],
         "lat": 35.9117,
         "lng": 14.5022
+    },
+    {
+        "id": "qarabba",
+        "name": "Qarabba Bay",
+        "category":"beaches",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/qarraba.png",
+        "description": "Nestled on Malta’s northern coast, Qarraba Bay offers a serene and picturesque escape from the island’s busier hotspots",
+        "tags": ["Beach","Rocky Beach"],
+        "lat": 35.927203346882145,
+        "lng": 14.343267226480073
+    },
+    {
+        "id": "stgeorge",
+        "name": "St. Georges Bay",
+        "category":"beaches",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/george.png",
+        "description": "Located in the heart of the entertainment mecca known as Paceville, it is the location where many tourists and students like to take a dip into our clean Maltese waters.",
+        "tags": ["Beach","Sandy Beach"],
+        "lat": 35.92594816413694,
+        "lng": 14.487860122024777
+    },
+    {
+        "id": "ghadira",
+        "name": "Għadira Bay",
+        "category":"beaches",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/ghadira.png",
+        "description": "Located on Malta’s northern coast, Għadira Bay is a stunning beach known for its white sands and clear waters. Whether you’re seeking relaxation or water activities, this picturesque spot is perfect for anyone looking to enjoy a day in the sun along the Mediterranean",
+        "tags": ["Beach","Sandy Beach"],
+        "lat": 35.969594018559704,
+        "lng": 14.350580361474064
+    },
+    {
+        "id": "prettybay",
+        "name": "Pretty Bay",
+        "category":"beaches",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/prettybay.png",
+        "description": "Known for its light blue and green waters, the beach is a popular spot for locals, particularly during the summer season. Despite being artificially filled with sand, the beach maintains a natural charm that draws visitors from far and wide.",
+        "tags": ["Beach","Sandy Beach", "Near Restaurants"],
+        "lat": 35.82493252395325,
+        "lng": 14.529302555095597
+    },
+    {
+        "id": "stthomas",
+        "name": "St Thomas Bay",
+        "category":"beaches",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/stthomas.png",
+        "description": "St Thomas Bay, located in Marsascala, Malta, is a stunning natural beach known for its breathtaking views, clear turquoise waters, and golden sands. The beach is nestled among high cliffs and rocky outcrops, adding to its picturesque scenery",
+        "tags": ["Beach","Sandy Beach", "Near Restaurants"],
+        "lat": 35.85532681441958,
+        "lng": 14.56569133997245
     }
 ]
