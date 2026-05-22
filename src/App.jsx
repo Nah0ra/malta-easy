@@ -23,7 +23,7 @@ function AppShell() {
          */
         <div
             style={{
-                maxWidth: 480,
+                maxWidth: 900,
                 margin: "0 auto",
                 height: "100dvh",
                 position: "relative",

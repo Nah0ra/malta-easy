@@ -14,10 +14,11 @@ const VENUE = {
 };
 
 const catColors = {
-    historic: "#CF142B",
+    historic: "#26acd8",
     nature: "#2D7A60",
     beaches: "#2466A8",
-    village: "#8B6A52",
+    shopping: "#8B6A52",
+    healthcare: "#CF142B",
     default: "#CF142B",
 };
 
@@ -58,7 +59,7 @@ function venuePin() {
     });
 }
 
-const filters = ["All", "Historic", "Nature", "Beaches", "Villages"];
+const filters = ["Historic", "Nature", "Beaches","Shopping", "Food", "Healthcare"];
 
 export default function MapPage() {
     const [activeFilter, setActiveFilter] = useState("All");
