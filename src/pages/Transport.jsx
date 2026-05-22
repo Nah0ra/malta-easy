@@ -1,6 +1,9 @@
 import { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import transportData from "../data/transport.json";
+import busMap from "/images/buses.png"
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const tabs = ["Bus", "Taxi", "Ferry"];
 
@@ -150,7 +153,72 @@ export default function Transport() {
                 {/* BUS */}
                 {activeTab === "Bus" && (
                     <>
-
+                        <Zoom>
+                            <img
+                                alt = "Bus map"
+                                src = {busMap}
+                                width = "500"
+                            />
+                        </Zoom>
+                        <div>
+                            <p
+                            style={{
+                                fontSize: 15,
+                            }}
+                            >
+                                Please refer to the official Tal-Linja app for more detailed information like bus routes, bus schedules and recommended routes
+                            </p>
+                            <br/>
+                            <a
+                                href={"https://www.publictransport.com.mt/tallinja-app/"}
+                                target='_blank'
+                                rel='noreferrer'
+                                style={{
+                                    padding: "8px 16px",
+                                    borderRadius: 100,
+                                    background: "var(--stone)",
+                                    display: "inline-block",
+                                    color: "var(--ink-2)",
+                                    fontSize: 12,
+                                    fontWeight: 500,
+                                    border: "1px solid var(--border)",
+                                    textDecoration: "none",
+                                    whiteSpace: "nowrap",
+                                    fontFamily: "var(--font-body)",
+                                    }}>
+                                Download Tal-Linja app
+                            </a>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <p
+                            style={{
+                                fontSize: 15
+                            }}
+                            >
+                                We also recommend Moovit, a public transit guide which can give you detailed information on how to get where you need to go, bus routes and navigation included (includes ads)
+                            </p>
+                            <br/>
+                            <a
+                                href={"https://moovitapp.com/"}
+                                target='_blank'
+                                rel='noreferrer'
+                                style={{
+                                    padding: "8px 16px",
+                                    borderRadius: 100,
+                                    background: "var(--stone)",
+                                    display: "inline-block",
+                                    color: "var(--ink-2)",
+                                    fontSize: 12,
+                                    fontWeight: 500,
+                                    border: "1px solid var(--border)",
+                                    textDecoration: "none",
+                                    whiteSpace: "nowrap",
+                                    fontFamily: "var(--font-body)",
+                                    }}>
+                                Download Moovit
+                            </a>
+                        </div>
                     </>
                 )}
 

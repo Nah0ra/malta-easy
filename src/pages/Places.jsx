@@ -5,15 +5,15 @@ import PlaceDetailModal from "../components/PlaceDetailModal";
 import places from "../data/places.json";
 
 const filters = [
-    { id: "all", label: "All" },
-    { id: "historic", label: "Historic" },
+    { id: "historic",label: "Historic"},
     { id: "nature", label: "Nature" },
     { id: "beaches", label: "Beaches" },
-    { id: "shopping", label: "Shopping"}
+    { id: "shopping", label: "Shopping"},
+    { id: "food",  label: "Food"}
 ];
 
 export default function Places() {
-    const [active, setActive] = useState("all");
+    const [active, setActive] = useState("historic");
     const [selected, setSelected] = useState(null);
 
     const filtered =
