@@ -6,13 +6,6 @@ import places from "../data/places.json";
 const MALTA_CENTER = [35.92, 14.42];
 const MALTA_ZOOM = 10;
 
-const VENUE = {
-    lat: 35.8993,
-    lng: 14.513,
-    name: "Course venue",
-    address: "142 St Christopher's Street, Valletta",
-};
-
 const catColors = {
     historic: "#26acd8",
     nature: "#2D7A60",
@@ -37,32 +30,10 @@ function placePin(color) {
     });
 }
 
-function venuePin() {
-    return L.divIcon({
-        className: "",
-        html: `
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="
-          background:#1C1917;color:white;
-          font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
-          padding:5px 10px;border-radius:8px;
-          border:2px solid white;
-          box-shadow:0 3px 12px rgba(0,0,0,0.3);
-          white-space:nowrap;
-        ">&#9733; Course venue</div>
-        <div style="width:2px;height:8px;background:#1C1917;margin-top:-1px;"></div>
-        <div style="width:8px;height:8px;border-radius:50%;background:#1C1917;margin-top:-1px;"></div>
-      </div>`,
-        iconSize: [130, 48],
-        iconAnchor: [65, 48],
-        popupAnchor: [0, -50],
-    });
-}
-
 const filters = ["Historic", "Nature", "Beaches","Shopping", "Food", "Healthcare"];
 
 export default function MapPage() {
-    const [activeFilter, setActiveFilter] = useState("All");
+    const [activeFilter, setActiveFilter] = useState("Historic");
     const [selected, setSelected] = useState(null);
 
     const filtered =
@@ -135,28 +106,6 @@ export default function MapPage() {
                         attribution=''
                     />
 
-                    {/* Course venue — always visible */}
-                    <Marker
-                        position={[VENUE.lat, VENUE.lng]}
-                        icon={venuePin()}
-                        zIndexOffset={1000}>
-                        <Popup>
-                            <div style={{ fontFamily: "var(--font-body)" }}>
-                                <p
-                                    style={{
-                                        fontSize: 13,
-                                        fontWeight: 500,
-                                        marginBottom: 2,
-                                    }}>
-                                    {VENUE.name}
-                                </p>
-                                <p style={{ fontSize: 12, color: "#78716C" }}>
-                                    {VENUE.address}
-                                </p>
-                            </div>
-                        </Popup>
-                    </Marker>
-
                     {/* Place pins */}
                     {filtered.map((place) => (
                         <Marker
@@ -197,11 +146,11 @@ export default function MapPage() {
                         gap: 5,
                     }}>
                     {[
-                        { color: "#CF142B", label: "Historic" },
+                        { color: "#26acd8", label: "Historic" },
                         { color: "#2D7A60", label: "Nature" },
                         { color: "#2466A8", label: "Beaches" },
-                        { color: "#8B6A52", label: "Villages" },
-                        { color: "#1C1917", label: "Venue", square: true },
+                        { color: "#8B6A52", label: "Shopping" },
+                        { color: "#CF142B", label: "Food"},
                     ].map((item) => (
                         <div
                             key={item.label}

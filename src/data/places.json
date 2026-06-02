@@ -1,36 +1,14 @@
 [
     {
-        "id": "valletta",
-        "name": "Valletta",
-        "category": "historic",
-        "wikipediaTitle": "Valletta",
-        "localImage": "/images/places/valletta.jpg",
-        "description": "Malta's Baroque capital and UNESCO World Heritage city. Explore the Grand Harbour, St John's Co-Cathedral, and the Upper Barrakka Gardens.",
-        "tags": ["Historic", "UNESCO site"],
-        "lat": 35.8997,
-        "lng": 14.5147
-    },
-    {
         "id": "mdina",
         "name": "Mdina",
         "category": "historic",
         "wikipediaTitle": "Mdina",
         "localImage": "/images/places/mdina.jpg",
         "description": "The Silent City — a medieval walled town perched on a hilltop. Best visited early morning before the crowds. Stunning views across the island.",
-        "tags": ["Historic", "Medieval"],
+        "tags": ["Historic", "Malta", "Medieval"],
         "lat": 35.8878,
         "lng": 14.4025
-    },
-    {
-        "id": "gozo",
-        "name": "Gozo Island",
-        "category": "nature",
-        "wikipediaTitle": "Gozo",
-        "localImage": "/images/places/gozo.jpg",
-        "description": "Malta's quieter sister island. Take the 25-minute ferry from Ċirkewwa. Visit the Citadella, swim at Ramla Bay, and explore dramatic coastal scenery.",
-        "tags": ["Nature", "Day trip", "Ferry required"],
-        "lat": 36.0444,
-        "lng": 14.2396
     },
     {
         "id": "dingli",
@@ -39,7 +17,7 @@
         "wikipediaTitle": "Dingli",
         "localImage": "/images/places/dingli.jpg",
         "description": "The highest point in Malta at 253 metres above sea level. Breathtaking clifftop walks with dramatic views over the Mediterranean. Best at sunset.",
-        "tags": ["Nature", "Cliffs", "Walking"],
+        "tags": ["Nature", "Malta", "Had-Dingli"],
         "lat": 35.8572,
         "lng": 14.3842
     },
@@ -50,7 +28,7 @@
         "wikipediaTitle": "St Peter's Pool, Malta",
         "localImage": "/images/places/PetersPool.jpg",
         "description": "The bay is a common attraction among tourists looking to snorkel",
-        "tags": ["Beach", "Rocky beach","Snorkeling"],
+        "tags": ["Beach", "Malta","Rocky beach"],
         "lat": 35.83343513246067,
         "lng": 14.561811677423137
     },
@@ -61,29 +39,9 @@
         "wikipediaTitle": "Golden Bay (Malta)",
         "localImage": "/images/places/goldenBay.jpg",
         "description": "One of Malta's most popular sandy beaches on the northwest coast. Backed by gentle dunes with sunbeds, a café, and regular bus connections.",
-        "tags": ["Beach", "Sandy beach"],
+        "tags": ["Beach", "Malta", "Sandy beach"],
         "lat": 35.93404759452658,
         "lng": 14.344520960092833
-    },
-    {
-        "id": "marsaxlokk",
-        "name": "Marsaxlokk",
-        "wikipediaTitle": "Marsaxlokk",
-        "localImage": "/images/places/marsaxlokk.jpg",
-        "description": "A traditional fishing village famous for its colourful luzzu boats. The Sunday market is a highlight — fresh fish, local produce, and crafts.",
-        "tags": ["Sunday market"],
-        "lat": 35.8414,
-        "lng": 14.5431
-    },
-    {
-        "id": "sliema",
-        "name": "Sliema",
-        "wikipediaTitle": "Sliema",
-        "localImage": "/images/places/sliema.jpg",
-        "description": "Malta's modern seafront strip. Great for restaurants, cafés, and evening walks along the promenade. Easy to reach by bus or the Valletta ferry.",
-        "tags": ["Shopping","Restaurants", "Seafront"],
-        "lat": 35.9117,
-        "lng": 14.5022
     },
     {
         "id": "qarabba",
@@ -92,7 +50,7 @@
         "wikipediaTitle": "",
         "localImage": "/images/places/qarraba.png",
         "description": "Nestled on Malta’s northern coast, Qarraba Bay offers a serene and picturesque escape from the island’s busier hotspots",
-        "tags": ["Beach","Rocky Beach"],
+        "tags": ["Beach","Malta","Rocky Beach"],
         "lat": 35.927203346882145,
         "lng": 14.343267226480073
     },
@@ -103,7 +61,7 @@
         "wikipediaTitle": "",
         "localImage": "/images/places/george.png",
         "description": "Located in the heart of the entertainment mecca known as Paceville, it is the location where many tourists and students like to take a dip into our clean Maltese waters.",
-        "tags": ["Beach","Sandy Beach"],
+        "tags": ["Beach","Malta","Sandy Beach"],
         "lat": 35.92594816413694,
         "lng": 14.487860122024777
     },
@@ -114,7 +72,7 @@
         "wikipediaTitle": "",
         "localImage": "/images/places/ghadira.png",
         "description": "Located on Malta’s northern coast, Għadira Bay is a stunning beach known for its white sands and clear waters. Whether you’re seeking relaxation or water activities, this picturesque spot is perfect for anyone looking to enjoy a day in the sun along the Mediterranean",
-        "tags": ["Beach","Sandy Beach"],
+            "tags": ["Beach","Malta","Sandy Beach"],
         "lat": 35.969594018559704,
         "lng": 14.350580361474064
     },
@@ -125,7 +83,7 @@
         "wikipediaTitle": "",
         "localImage": "/images/places/prettybay.png",
         "description": "Known for its light blue and green waters, the beach is a popular spot for locals, particularly during the summer season. Despite being artificially filled with sand, the beach maintains a natural charm that draws visitors from far and wide.",
-        "tags": ["Beach","Sandy Beach", "Near Restaurants"],
+        "tags": ["Beach","Malta","Sandy Beach"],
         "lat": 35.82493252395325,
         "lng": 14.529302555095597
     },
@@ -136,8 +94,86 @@
         "wikipediaTitle": "",
         "localImage": "/images/places/stthomas.png",
         "description": "St Thomas Bay, located in Marsascala, Malta, is a stunning natural beach known for its breathtaking views, clear turquoise waters, and golden sands. The beach is nestled among high cliffs and rocky outcrops, adding to its picturesque scenery",
-        "tags": ["Beach","Sandy Beach", "Near Restaurants"],
+        "tags": ["Beach","Malta","Sandy Beach"],
         "lat": 35.85532681441958,
         "lng": 14.56569133997245
+    },
+    {
+        "id": "grandmasters",
+        "name": "Grand Master's Palace",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/grandmasters.png",
+        "description": "The Grandmaster's Palace (Maltese: Il-Palazz tal-Granmastru), officially known as The Palace (Maltese: Il-Palazz), is a palace in Valletta, Malta. It was built between the 16th and 18th centuries as the palace of the Grand Master of the Knights Hospitaller, who ruled Malta from 1530 to 1798, and was also known as the Magisterial Palace (Maltese: Palazz Maġisterjali).",
+        "tags": ["Historic","Malta","Valletta"],
+        "lat": 35.89861218362231,
+        "lng": 14.513952892045195
+    },
+    {
+        "id": "stanglo",
+        "name": "Fort St.Angelo",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/stangelo.png",
+        "description": "Strategically located on a hillock, at the end of the Birgu peninsula, the fort dominates the Grand Harbour. By 1274, the stronghold, previously known as Castrum Maris (castle-by-the-sea), consisted of two enclosures. The Sicilian overlords considered this fort as a guarantee of their interests in the Maltese Islands, and it was administered by loyal subjects under the title of Castellan.",
+        "tags": ["Historic","Malta","Birgu"],
+        "lat": 35.89272283659732,
+        "lng": 14.517591045510173
+    },
+    {
+        "id": "ghardalam",
+        "name": "Għar Dalam",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/ghardalam.png",
+        "description": "No such animals have lived on the Maltese Islands for thousands of years. Rows of ancient animal bones, unearthed from Għar Dalam cave, are exhibited in the Joseph Baldacchino Hall, which still retains one of a handful of Victorian-style displays in Europe.",
+        "tags": ["Historic","Malta","Birżebbuġa"],
+        "lat": 35.83673580555989,
+        "lng": 14.527882337425746
+    },
+    {
+        "id": "hagarqim",
+        "name": "Hagar Qim",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/hagarqim.png",
+        "description": "The site of Ħaġar Qim consists of a group of megalithic structures constructed in globigerina limestone, situated on the crest of a ridge. To the west, the site commands views over the open sea, while to the east it overlooks the edge of a large fertile plain. The main structure of Ħaġar Qim is unusual, with features and doorways along its external wall. The floor of the central passage is paved with stone slabs, while the floors in the chambers branching off this passage are made from beaten earth",
+        "tags": ["Historic","Malta","Qrendi"],
+        "lat": 35.82783348499104,
+        "lng": 14.442062519288472
+    },
+    {
+        "id": "stelmo",
+        "name": "Fort St.Elmo",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/stelmo.png",
+        "description": "Originally intended as a war machine, the fort was built in a strategic location at the tip of the Sceberras peninsula to face and hold back the wrath of the Ottoman armada. Offering unobstructed panoramic views of the harbours and the surrounding towns and villages, this key position was already recognised and exploited during the Medieval period",
+        "tags": ["Historic","Malta","Valletta"],
+        "lat": 35.90214565627633,
+        "lng": 14.518792286666244
+    },
+    {
+        "id": "domusromana",
+        "name": "Domvs Romana",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/domusromana.png",
+        "description": "The Domvs Romana sheds light on the private life and habits of an ancient Roman aristocrat. Very little was recovered of the noble Roman town house (domvs) itself, but the intricate mosaics and other artefacts that survived for centuries are testimony enough to the original richness of this dwelling",
+        "tags": ["Historic","Malta","Rabat"],
+        "lat": 35.88528433144247,
+        "lng": 14.400303732735939
+    },
+    {
+        "id": "tabistra",
+        "name": "Ta' Bistra Catacombs",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/tabistra.png",
+        "description": "TLocated half way between the ancient town of Melite and the once-important harbour of Salina, Ta’ Bistra Catacombs are, so far, the largest set of tombs and catacombs beyond the confines of the ancient city of the island. They were first recorded in the late 1800s but were only investigated in 1933 by Captain Charles Zammit, before part of the site was covered over by a new road leading down to Burmarrad. Further studies in 2004, 2013, and 2014, have brought the site back to life with new discoveries and hence, new interpretations",
+        "tags": ["Historic","Malta","Mosta"],
+        "lat": 35.915626518075484,
+        "lng": 14.416249500000973
     }
+
 ]
