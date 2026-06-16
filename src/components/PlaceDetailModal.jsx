@@ -272,39 +272,6 @@ export default function PlaceDetailModal({ place, onClose }) {
                             {place.description}
                         </p>
                     )}
-
-                    {/* Wikipedia link */}
-                    {data?.pageUrl && (
-                        <a
-                            href={data.pageUrl}
-                            target='_blank'
-                            rel='noreferrer'
-                            style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: 6,
-                                marginTop: 18,
-                                fontSize: 13,
-                                color: accentColor,
-                                fontWeight: 500,
-                                textDecoration: "none",
-                                minHeight: 44,
-                                padding: "10px 0",
-                            }}>
-                            Learn more
-                            <svg
-                                width='13'
-                                height='13'
-                                viewBox='0 0 24 24'
-                                fill='none'
-                                stroke={accentColor}
-                                strokeWidth='2'>
-                                <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
-                                <polyline points='15 3 21 3 21 9' />
-                                <line x1='10' y1='14' x2='21' y2='3' />
-                            </svg>
-                        </a>
-                    )}
                 </div>
             </div>
         </>

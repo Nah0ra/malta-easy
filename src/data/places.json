@@ -7,8 +7,8 @@
         "localImage": "/images/places/mdina.jpg",
         "description": "The Silent City — a medieval walled town perched on a hilltop. Best visited early morning before the crowds. Stunning views across the island.",
         "tags": ["Historic", "Malta", "Medieval"],
-        "lat": 35.8878,
-        "lng": 14.4025
+        "lat": 35.886516767653205,
+        "lng": 14.403034374352549
     },
     {
         "id": "dingli",
@@ -18,8 +18,8 @@
         "localImage": "/images/places/dingli.jpg",
         "description": "The highest point in Malta at 253 metres above sea level. Breathtaking clifftop walks with dramatic views over the Mediterranean. Best at sunset.",
         "tags": ["Nature", "Malta", "Had-Dingli"],
-        "lat": 35.8572,
-        "lng": 14.3842
+        "lat": 35.852287976768615,
+        "lng": 14.385436677750159
     },
     {
         "id": "peterspool",
@@ -29,8 +29,8 @@
         "localImage": "/images/places/PetersPool.jpg",
         "description": "The bay is a common attraction among tourists looking to snorkel",
         "tags": ["Beach", "Malta","Rocky beach"],
-        "lat": 35.83343513246067,
-        "lng": 14.561811677423137
+        "lat": 35.833276594382696,
+        "lng": 14.562098961008749
     },
     {
         "id": "goldenBay",
@@ -40,8 +40,8 @@
         "localImage": "/images/places/goldenBay.jpg",
         "description": "One of Malta's most popular sandy beaches on the northwest coast. Backed by gentle dunes with sunbeds, a café, and regular bus connections.",
         "tags": ["Beach", "Malta", "Sandy beach"],
-        "lat": 35.93404759452658,
-        "lng": 14.344520960092833
+        "lat": 35.93408231413356,
+        "lng": 14.344381500461086
     },
     {
         "id": "qarabba",
@@ -51,8 +51,8 @@
         "localImage": "/images/places/qarraba.png",
         "description": "Nestled on Malta’s northern coast, Qarraba Bay offers a serene and picturesque escape from the island’s busier hotspots",
         "tags": ["Beach","Malta","Rocky Beach"],
-        "lat": 35.927203346882145,
-        "lng": 14.343267226480073
+        "lat": 35.92727716893199,
+        "lng": 14.343224321706872
     },
     {
         "id": "stgeorge",
@@ -62,8 +62,8 @@
         "localImage": "/images/places/george.png",
         "description": "Located in the heart of the entertainment mecca known as Paceville, it is the location where many tourists and students like to take a dip into our clean Maltese waters.",
         "tags": ["Beach","Malta","Sandy Beach"],
-        "lat": 35.92594816413694,
-        "lng": 14.487860122024777
+        "lat": 35.926003255972084,
+        "lng": 14.48779127313322
     },
     {
         "id": "ghadira",
@@ -73,8 +73,8 @@
         "localImage": "/images/places/ghadira.png",
         "description": "Located on Malta’s northern coast, Għadira Bay is a stunning beach known for its white sands and clear waters. Whether you’re seeking relaxation or water activities, this picturesque spot is perfect for anyone looking to enjoy a day in the sun along the Mediterranean",
             "tags": ["Beach","Malta","Sandy Beach"],
-        "lat": 35.969594018559704,
-        "lng": 14.350580361474064
+        "lat": 35.96952271782915,
+        "lng": 14.350596483019567
     },
     {
         "id": "prettybay",
@@ -84,8 +84,8 @@
         "localImage": "/images/places/prettybay.png",
         "description": "Known for its light blue and green waters, the beach is a popular spot for locals, particularly during the summer season. Despite being artificially filled with sand, the beach maintains a natural charm that draws visitors from far and wide.",
         "tags": ["Beach","Malta","Sandy Beach"],
-        "lat": 35.82493252395325,
-        "lng": 14.529302555095597
+        "lat": 35.825072795579416,
+        "lng": 14.52924192580913
     },
     {
         "id": "stthomas",
@@ -95,85 +95,315 @@
         "localImage": "/images/places/stthomas.png",
         "description": "St Thomas Bay, located in Marsascala, Malta, is a stunning natural beach known for its breathtaking views, clear turquoise waters, and golden sands. The beach is nestled among high cliffs and rocky outcrops, adding to its picturesque scenery",
         "tags": ["Beach","Malta","Sandy Beach"],
-        "lat": 35.85532681441958,
-        "lng": 14.56569133997245
+        "lat": 35.855218956854486,
+        "lng": 14.565687604362866
     },
     {
         "id": "grandmasters",
         "name": "Grand Master's Palace",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Grandmaster's Palace, Valletta",
         "localImage": "/images/places/grandmasters.png",
         "description": "The Grandmaster's Palace (Maltese: Il-Palazz tal-Granmastru), officially known as The Palace (Maltese: Il-Palazz), is a palace in Valletta, Malta. It was built between the 16th and 18th centuries as the palace of the Grand Master of the Knights Hospitaller, who ruled Malta from 1530 to 1798, and was also known as the Magisterial Palace (Maltese: Palazz Maġisterjali).",
         "tags": ["Historic","Malta","Valletta"],
-        "lat": 35.89861218362231,
-        "lng": 14.513952892045195
+        "lat": 35.898579736335904,
+        "lng": 14.51388596076806
     },
     {
         "id": "stanglo",
         "name": "Fort St.Angelo",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Fort St. Angelo",
         "localImage": "/images/places/stangelo.png",
         "description": "Strategically located on a hillock, at the end of the Birgu peninsula, the fort dominates the Grand Harbour. By 1274, the stronghold, previously known as Castrum Maris (castle-by-the-sea), consisted of two enclosures. The Sicilian overlords considered this fort as a guarantee of their interests in the Maltese Islands, and it was administered by loyal subjects under the title of Castellan.",
         "tags": ["Historic","Malta","Birgu"],
-        "lat": 35.89272283659732,
-        "lng": 14.517591045510173
+        "lat": 35.89291405343737,
+        "lng": 14.517537407182646
     },
     {
         "id": "ghardalam",
         "name": "Għar Dalam",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Għar Dalam",
         "localImage": "/images/places/ghardalam.png",
         "description": "No such animals have lived on the Maltese Islands for thousands of years. Rows of ancient animal bones, unearthed from Għar Dalam cave, are exhibited in the Joseph Baldacchino Hall, which still retains one of a handful of Victorian-style displays in Europe.",
         "tags": ["Historic","Malta","Birżebbuġa"],
-        "lat": 35.83673580555989,
-        "lng": 14.527882337425746
+        "lat": 35.8367379860204,
+        "lng": 14.527997591653792
     },
     {
         "id": "hagarqim",
         "name": "Hagar Qim",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Ħaġar Qim",
         "localImage": "/images/places/hagarqim.png",
         "description": "The site of Ħaġar Qim consists of a group of megalithic structures constructed in globigerina limestone, situated on the crest of a ridge. To the west, the site commands views over the open sea, while to the east it overlooks the edge of a large fertile plain. The main structure of Ħaġar Qim is unusual, with features and doorways along its external wall. The floor of the central passage is paved with stone slabs, while the floors in the chambers branching off this passage are made from beaten earth",
         "tags": ["Historic","Malta","Qrendi"],
-        "lat": 35.82783348499104,
-        "lng": 14.442062519288472
+        "lat": 35.82788111725999,
+        "lng": 14.442087934733385
     },
     {
         "id": "stelmo",
         "name": "Fort St.Elmo",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Fort Saint Elmo",
         "localImage": "/images/places/stelmo.png",
         "description": "Originally intended as a war machine, the fort was built in a strategic location at the tip of the Sceberras peninsula to face and hold back the wrath of the Ottoman armada. Offering unobstructed panoramic views of the harbours and the surrounding towns and villages, this key position was already recognised and exploited during the Medieval period",
         "tags": ["Historic","Malta","Valletta"],
-        "lat": 35.90214565627633,
-        "lng": 14.518792286666244
+        "lat": 35.90227788265873,
+        "lng": 14.51872836305335
     },
     {
         "id": "domusromana",
         "name": "Domvs Romana",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Domvs Romana",
         "localImage": "/images/places/domusromana.png",
         "description": "The Domvs Romana sheds light on the private life and habits of an ancient Roman aristocrat. Very little was recovered of the noble Roman town house (domvs) itself, but the intricate mosaics and other artefacts that survived for centuries are testimony enough to the original richness of this dwelling",
         "tags": ["Historic","Malta","Rabat"],
-        "lat": 35.88528433144247,
-        "lng": 14.400303732735939
+        "lat": 35.885336487900865,
+        "lng": 14.400217903314436
     },
     {
         "id": "tabistra",
         "name": "Ta' Bistra Catacombs",
         "category":"historic",
-        "wikipediaTitle": "",
+        "wikipediaTitle": "Catacombs of Malta",
         "localImage": "/images/places/tabistra.png",
-        "description": "TLocated half way between the ancient town of Melite and the once-important harbour of Salina, Ta’ Bistra Catacombs are, so far, the largest set of tombs and catacombs beyond the confines of the ancient city of the island. They were first recorded in the late 1800s but were only investigated in 1933 by Captain Charles Zammit, before part of the site was covered over by a new road leading down to Burmarrad. Further studies in 2004, 2013, and 2014, have brought the site back to life with new discoveries and hence, new interpretations",
+        "description": "Located half way between the ancient town of Melite and the once-important harbour of Salina, Ta’ Bistra Catacombs are, so far, the largest set of tombs and catacombs beyond the confines of the ancient city of the island. They were first recorded in the late 1800s but were only investigated in 1933 by Captain Charles Zammit, before part of the site was covered over by a new road leading down to Burmarrad. Further studies in 2004, 2013, and 2014, have brought the site back to life with new discoveries and hence, new interpretations",
         "tags": ["Historic","Malta","Mosta"],
-        "lat": 35.915626518075484,
-        "lng": 14.416249500000973
+        "lat": 35.915588914136364,
+        "lng": 14.41616313188886
+    },
+    {
+        "id": "grancastello",
+        "name": "Gran Castello Historic House",
+        "category":"historic",
+        "wikipediaTitle": "Gran Castello Historic House",
+        "localImage": "/images/places/grancastello.png",
+        "description": "This is a cluster of interconnected houses in Bernardo De Opuo Street. While still hosting a range of exhibits illustrating the local domestic, rural and traditional ways of life, this site is gradually being transformed to reflect a domestic atmosphere and way of life typical of an 18th-century urban environment",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.04673158821325,
+        "lng": 14.239683905865325
+    },
+    {
+        "id": "gozomuseum",
+        "name": "Gozo Nature Museum",
+        "category":"historic",
+        "wikipediaTitle": "Gozo Nature Museum",
+        "localImage": "/images/places/gozonature.png",
+        "description": "An audio-visual experience explores Gozo’s terrestrial Natura 2000 sites, showcasing fragile habitats that support a variety of endemic flora and fauna. You can also learn about important seabird species that breed on the island. A dedicated room focuses on the Natura 2000 site of the Ċittadella itself – a historic fortified city with unique ecological characteristics that sustain rare plants and local fauna, including several bat species",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.04672941556508,
+        "lng": 14.23905308888121
+    },
+    {
+        "id": "oldprison",
+        "name": "The Old Prison",
+        "category":"historic",
+        "wikipediaTitle": "Old Prison (Victoria)",
+        "localImage": "/images/places/oldprison.png",
+        "description": "Situated in the Citadel in Victoria, Gozo, the prison stands adjacent to the Courts of Justice, to which it was originally connected. In its present form, the prison complex is divided into two sections: an entrance hall which originally served as a common cell in the 19th century and now hosts a selection of graffiti casts, a 16th-century carrack graffito, some prison-related objects (including the surviving part of a wooden stocks); and a merchandise section, and a free-standing block with six individual cells",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.04651841372901,
+        "lng": 14.23900267665072
+    },
+    {
+        "id": "ggantija",
+        "name": "Ġgantija Archaeological Park",
+        "category":"historic",
+        "wikipediaTitle": "Ġgantija",
+        "localImage": "/images/places/ggantija.png",
+        "description": "The Ġgantija Archaeological Park complex is a unique prehistoric monument situated at the centre of an extraordinary archaeological landscape, the Xagħra plateau on the                island of Gozo. The site consists of two structures built in the Late Neolithic period between 3,800 and 2,000B.C. Notwithstanding its age, the monument survives in a considerably good state of preservation. The Neolithic builders made use of both locally sourced Globigerina and Coralline Limestone. The hard-wearing Coralline Limestone is used extensively at Ġgantija, while the softer Globigerina Limestone is reserved for inner furnishings, such as doorways, altars and decorative slabs",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.049038287871156,
+        "lng": 14.267699030808739
+    },
+    {
+        "id": "tapinu",
+        "name": "Ta’ Pinu Sanctuary",
+        "category":"historic",
+        "wikipediaTitle": "Ta' Pinu",
+        "localImage": "/images/places/tapinu.png",
+        "description": "The Shrine of Our Lady of Ta' Pinu, with origins shrouded in mystery, first appears in historical records when Bishop Domenico Cubelles noted its reconstruction and       ownership by the noble Gentile family. In 1575, Msgr. Pietro Duzina ordered its demolition due to disrepair, but tradition claims a worker's injury during the demolition was a divine sign to preserve it. In 1858, the church was renamed 'Ta' Pinu' after Pinu Gauci, who financed its restoration.",
+        "tags": ["Historic","Gozo","Għarb"],
+        "lat": 36.062148399517405,
+        "lng": 14.21476995969122
+    },
+    {
+        "id": "cittadella",
+        "name": "Cittadella",
+        "category":"historic",
+        "wikipediaTitle": "Cittadella (Gozo)",
+        "localImage": "/images/places/cittadella.png",
+        "description": "With its distinctive skyline and imposing military architecture, Cittadella, the ancient fortified city, stands out as Gozo’s major landmark, visible from all over the island. Occupied since prehistoric times, it reflects the marks left by its inhabitants, shaping the majestic complex we see today. The Citadel is rich in buildings of architectural, military, and historical value, and its open areas host numerous rare species of flora and fauna. It is an ideal setting for quality events that bring history to life, linking the island’s past with its future. Visiting Cittadella allows one to step back in time, experiencing history in an unforgettable way",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.046786360464914,
+        "lng": 14.239534195120815
+    },
+    {
+        "id": "rotunda",
+        "name": "Rotunda",
+        "category":"historic",
+        "wikipediaTitle": "Rotunda of Xewkija",
+        "localImage": "/images/places/rotunda.png",
+        "description": "When you consider the age of many of Gozo’s churches, The Rotunda Church in Xewkija is a mere youngster. Despite appearances the building of this ‘classic style’ church honoring St John the Baptist only began in the early 1950’s and was completed by the 1970’s. Creating the church we see today. After the II World War, Rev. Ġużepp Grech who was the Archpriest of Xewkija at that time gained approval from the Government and church authorities to build a new church for parishioners. Xewkija’s population was growing by around 100 people a year and locals had outgrown their church. Xewkija wasn’t a wealthy village; its workforce were mostly fishermen, farmers and construction workers. But, more importantly these industrious people had faith.",
+        "tags": ["Historic","Gozo","Xewkija"],
+        "lat": 36.031860967956554,
+        "lng": 14.26102637305815
+    },
+    {
+        "id": "georgebasillica",
+        "name": "St George’s Basilica",
+        "category":"historic",
+        "wikipediaTitle": "St George's Basilica, Victoria",
+        "localImage": "/images/places/stgeorgebasilica.png",
+        "description": "St George’s Basilica is right in the middle of the capital, Victoria, locally known as Ir-Rabat, surrounded by a maze of charming old narrow streets and alleys. It is one of the most architecturally and artistically (as well as religiously and culturally) important churches in Gozo. The parish originated in medieval times, certainly before 1450. The foundation stone of the present church was laid in 1672 and it was consecrated in 1755. The church gained the title of Basilica in 1958 and in 1976 it became an Archipresbyteral and Collegiate Church aggregated to the Cathedral-Basilica of Saint John Lateran of Rome.",
+        "tags": ["Historic","Gozo","Victoria"],
+        "lat": 36.044210770714464,
+        "lng": 14.23900713167343
+    },
+    {
+        "id": "marfaridge",
+        "name": "Marfa Ridge",
+        "category":"nature",
+        "wikipediaTitle": "Marfa Ridge",
+        "localImage": "/images/places/marfaridge.png",
+        "description": "Circling the northernmost promontory of Malta, walking Marfa Ridge merits proper footwear – sticking to the path means more than eight miles of trails ahead – but the rewards of views over Mellieħa Bay will make you temporarily forget your tired feet",
+        "tags": ["Nature","Malta","Mellieħa"],
+        "lat": 35.977811208644184,
+        "lng": 14.34151771946072
+    },
+    {
+        "id": "siggiewi",
+        "name": "Siġġiewi",
+        "category":"nature",
+        "wikipediaTitle": "Siġġiewi",
+        "localImage": "/images/places/siggiewi.png",
+        "description": "In the southwest of the island – and not far from Valletta – lies Siġġiewi. Those after a more rigorous walk should note that the area is renowned for its canyons and valleys, which are dotted with farmhouses. But a must for any walker is the Għar Lapsi natural swimming hole.",
+        "tags": ["Nature","Malta","Siġġiewi"],
+        "lat": 35.85520886168476,
+        "lng": 14.438463447998508
+    },
+    {
+        "id": "xlendi",
+        "name": "Xlendi Valley",
+        "category":"nature",
+        "wikipediaTitle": "Xlendi",
+        "localImage": "/images/places/xlendi.png",
+        "description": "In the southwest of the island – and not far from Valletta – lies Siġġiewi. Those after a more rigorous walk should note that the area is renowned for its canyons and valleys, which are dotted with farmhouses. But a must for any walker is the Għar Lapsi natural swimming hole.",
+        "tags": ["Nature","Gozo","Xlendi"],
+        "lat": 36.03112804844227,
+        "lng": 14.217075842965144
+    },
+    {
+        "id": "bluegrotto",
+        "name": "Blue Grotto",
+        "category":"nature",
+        "wikipediaTitle": "Blue Grotto (Malta)",
+        "localImage": "/images/places/bluegrotto.png",
+        "description": "The Blue Grotto (Maltese: Taħt il-Ħnejja) refers to a number of sea caverns on the south east coast of Malta, a short distance from the fishing harbour limits of Wied iż-Żurrieq, Malta. Wied iz-Zurrieq, the Blue Grotto and neighboring caves are all located within the Qrendi village confines, per Local Council Act 1993 and a 1910 legal dispute between the villages of Qrendi and Zurrieq over their jurisdiction, which ruled in favour of Qrendi",
+        "tags": ["Nature","Malta","Qrendi"],
+        "lat": 35.82097570501914,
+        "lng": 14.457414661937117
+    },
+    {
+        "id": "sallyport",
+        "name": "Sally Port",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/sallyport.png",
+        "description": "Sally Port is an authentic Italian Pizzeria that takes pride in being true to the Italian philosophy of food.",
+        "tags": ["Food","Malta","Valletta","Vegetarian friendly","Vegan options"],
+        "lat": 35.90121409748849,
+        "lng": 14.51482073081084
+    },
+    {
+        "id": "casasotto",
+        "name": "Casa Sotto",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/casasotto.png",
+        "description": "Authentic Italian Pizza and Pinsa Romana as in the best Roman tradition.",
+        "tags": ["Food","Malta","Valletta","Vegetarian friendly","Vegan options", "Gluten free options"],
+        "lat": 35.89949277271279,
+        "lng": 14.513899515347083
+    },
+    {
+        "id": "bistro516",
+        "name": "Bistro 516",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/bistro516.png",
+        "description": "Enjoy quality dining by the breathtaking Valletta waterfront in an open air experience.",
+        "tags": ["Food","Malta","Valletta","Vegetarian friendly","Vegan options", "Gluten free options", "Seafront"],
+        "lat": 35.88953688405831,
+        "lng": 14.507423625741586
+    },
+    {
+        "id": "boccebistro",
+        "name": "Bocce Bistro",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/boccebistro.png",
+        "description": "Nestled beneath Valletta's fortified walls, Bocce Bistro faces the Mediterranean Sea, offering popular dishes in a picturesque and relaxing seaside setting.",
+        "tags": ["Food","Malta","Valletta", "Seafront"],
+        "lat": 35.90141449791428,
+        "lng": 14.51163013557558
+    },
+    {
+        "id": "academia",
+        "name": "L'Accademia Cafe",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/academia.png",
+        "description": "Enjoy a good meal within the Valletta arcades next to the hustle and bustle of Valletta's main gate",
+        "tags": ["Food","Malta","Valletta", "Lively"],
+        "lat": 35.89663438050446,
+        "lng": 14.509613989441599
+    },
+    {
+        "id": "granaries",
+        "name": "The Granaries",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/granaries.png",
+        "description": "Placed beside the Granaries, enjoy an authentic and historic atmosphere with local food offerings",
+        "tags": ["Food","Malta","Floriana", "Historic"],
+        "lat": 35.89663438050446,
+        "lng": 14.509613989441599
+    },
+    {
+        "id": "buskett",
+        "name": "Buskett Gardens",
+        "category":"nature",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/buskett.png",
+        "description": "The gardens contain broadleaved deciduous woodland, native coniferous woodland, with sclerophyllous garrigue and maquis shrubland, as well as groves of fruit trees.[5] Many different trees and shrubs grow in the gardens, including numerous fruit-bearing trees. One of the greenest areas in Malta, the gardens are at their best in the spring but also provide shade from the harsh mid-summer sun and offer a quiet place for a walk in the winter months. ",
+        "tags": ["Nature","Malta","Siggiewi", "Forest"],
+        "lat": 35.85613770530406,
+        "lng": 14.396798157651078
+    },
+    {
+        "id": "agathatower",
+        "name": "Saint Agatha's Tower",
+        "category":"historic",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/redtower.png",
+        "description": "Saint Agatha's Tower (original language as Torre Sant’ Agata, also named Torre Rossa and Torre Caura) was built between November 1647 and April 1649 to a design by the architect Antonio Garsin. The structure consists of a square tower with four corner towers. Cannon ports in the turrets gave interlocking fields of fire commanding the base of the walls and the gateway, with other large cannon ports in the faces of the main tower.",
+        "tags": ["Historic","Malta","Il-Mellieħa", "Tower"],
+        "lat": 35.97474618389052,
+        "lng": 14.343029830854546
+    },
+    {
+        "id": "xemxijaheritage",
+        "name": "Xemxija Heritage Trail",
+        "category":"nature",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/xemxijaheritage.png",
+        "description": "The Xemxija Heritage Trail is a fantastic historical trail in St Paul’s Bay in Malta. Starting near the majestic Xemxija Bay, the Xemxija Heritage Trail passes no less than 20 archaeological attractions!",
+        "tags": ["Nature","Malta","Xemxija", "Heritage"],
+        "lat": 35.948428925365086,
+        "lng": 14.38162922143025
     }
-
 ]
