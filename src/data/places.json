@@ -405,5 +405,60 @@
         "tags": ["Nature","Malta","Xemxija", "Heritage"],
         "lat": 35.948428925365086,
         "lng": 14.38162922143025
+    },
+    {
+        "id": "cordina",
+        "name": "Caffe Cordina",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/cordina.png",
+        "description": "Located in an old palazzo in the bustling streets of Valletta, Caffe Cordina occupies a special place in the hearts of local and foreign visitors alike. Tracing its origins back to a small tea shop in Bormla, it has since grown and flourished into the Maltese icon we know today",
+        "tags": ["Food","Malta","Valletta", "Historic"],
+        "lat": 35.89873711469651,
+        "lng": 14.513138876989142
+    },
+    {
+        "id": "museumcafe",
+        "name": "Museum Cafe",
+        "category":"food",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/museumcaffe.png",
+        "description": "Enjoy good food in a time capsule of the Maltese pre 2000s. The walls are adorned with several posters and novelties to let you feel like you're in a time capsule of Maltese pop culture.",
+        "tags": ["Food","Malta","Valletta", "Historic"],
+        "lat": 35.89657131022195,
+        "lng": 14.511622426675673
+    },
+    {
+        "id": "hwawar",
+        "name": "Tal-Hwawar Spice Shop",
+        "category":"shopping",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/hwawar.png",
+        "description": "Discover a cozy spice shop offering a wide range of traditional maltese spices, displayed in beautiful jars. If you want to take a piece of traditonal maltese cooking with you, this is the place to be.",
+        "tags": ["Shopping","Malta","Valletta", "Spices"],
+        "lat": 35.89861492966969,
+        "lng": 14.515921978562426
+    },
+    {
+        "id": "maypole",
+        "name": "Maypole Valletta",
+        "category":"shopping",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/maypole.png",
+        "description": "Maypole is one of the most popular bakers in Malta, with award winning local bread and pastries. Try a freshly baked Ftira or some traditional Maltese sweets for the best experience",
+        "tags": ["Shopping","Malta","Valletta", "Bread and pastries"],
+        "lat": 35.89806145680954,
+        "lng": 14.512772360119374
+    },
+    {
+        "id": "mdinaglass",
+        "name": "Mdina Glass (Valletta)",
+        "category":"shopping",
+        "wikipediaTitle": "",
+        "localImage": "/images/places/mdinaglass.png",
+        "description": "Mdina Glass showcases Malta's renowned glassblowing culture, with beautiful souvenirs on sale to fit any need. You can also learn about the history of maltese glassblowing while you admire the exquisite merchandise",
+        "tags": ["Shopping","Malta","Valletta", "Glassware"],
+        "lat": 35.89689902063174,
+        "lng": 14.512451761948885
     }
 ]
